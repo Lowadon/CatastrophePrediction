@@ -9,7 +9,8 @@ const pool = mariadb.createPool({
     host: 'localhost',
     user: 'root',
     password: 'toor',
-    connectionLimit: 1
+    database: 'esp_data',
+    connectionLimit: 2
 });
 
 async function asyncFunction(message) {
@@ -18,7 +19,7 @@ async function asyncFunction(message) {
     console.log(jsonObj);
     try {
         conn = await pool.getConnection();
-        const res = await conn.query("INSERT INTO esp_data.devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICATE UPDATE last_entry = VALUES (last_entry);", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
+        const res = await conn.query("INSERT INTO devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICATE UPDATE last_entry = VALUES (last_entry);", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
 	    console.log(res);
         //const entry = await conn.query("INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at) VALUES (?, ?, ?, ?, ?, ?);", [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.humidity, timestamp]);
     } catch(err) {
