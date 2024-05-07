@@ -177,14 +177,18 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-    getData((error, data) => {    
-        if(error)
-        {
-            res.status(500).json('Error retrieving data!');
-            return;    
+    let conn;
+    conn = pool.getConnection();
+    const query = "SELECT * FROM entries";
+    connection.query(query, (err, result) => {
+        if (err) {
+            console.error("Database query error: " + err.message);
+            res.status(500).json({ error: "Internal Server Error" });
+        } else {
+            res.json(result);
         }
-        res.json(data);
     });
+    conn.end();
 });
 
 function get_index(req, res) {
