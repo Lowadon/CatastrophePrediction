@@ -19,7 +19,13 @@ async function asyncFunction(message) {
         conn = await pool.getConnection();
         const rows = await conn.query("Select 1 as val");
         console.log(rows);
-        console.log(jsonObj.device_id);
+        console.log("Device ID: " + jsonObj.device_id);
+        console.log("Temperature: " + jsonObj.temperature);
+        console.log("Altitude: " + jsonObj.altitude);
+        console.log("Air Pressure: " + jsonObj.airPressure);
+        console.log("Humidity: " + jsonObj.humidity);
+        console.log("Timestamp: " + jsonObj.timestamp);
+        
         const device = await conn.query("SELECT id FROM devices WHERE ID = " + jsonObj.device_id + ";", (error, results, fields) => {
             if (error) {console.log("Error: " + error); throw error;}
 
