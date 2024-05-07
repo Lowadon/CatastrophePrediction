@@ -12,7 +12,7 @@ const pool = mariadb.createPool({
     connectionLimit: 1
 });
 
-async function insertData(message) {
+async function asyncFunction(message) {
     let conn;
     let jsonObj = JSON.parse(message);
     try {
@@ -94,8 +94,8 @@ function insert_entry(conn, jsonObj)
 const mqtt = require('mqtt');
 const { each } = require("jquery");
 const protocol = 'mqtt';
-//const mqtt_broker = 'test.mosquitto.org';
-const mqtt_broker = 'mqtt.eclipseprojects.io';
+const mqtt_broker = 'test.mosquitto.org';
+//const mqtt_broker = 'mqtt.eclipseprojects.io';
 const mqtt_port = 1883;
 const mqtt_url = protocol + '://' + mqtt_broker + ':' + mqtt_port;
 const mqtt_topic = 'est/katastrophenprojekt/espdaten';
@@ -109,7 +109,8 @@ mqtt_client.on('connected', () => {
 
 mqtt_client.on('message', (topic, message) => {
     console.log('Message:' + message)
-    insertData(message);
+    asyncFunction(message);
+    console.log('success');
 });
 
 //VARIABLES
