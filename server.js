@@ -26,24 +26,12 @@ async function asyncFunction(message) {
         //console.log("Humidity: " + jsonObj.humidity);
         //console.log("Timestamp: " + jsonObj.timestamp);
         
-        insert_device(conn, jsonObj.device_id, jsonObj.timestamp);
-        print_devices(conn);
+        //insert_device(conn, jsonObj.device_id, jsonObj.timestamp);
+        //print_devices(conn);
 
-        const device = await conn.query("SELECT id FROM esp_data.devices WHERE ID = " + jsonObj.device_id + ";", (error, results, fields) => {
-            if (error) {console.log("Error: " + error); throw error;}
-
-            let data = results;
-
-            console.log("Data: " + data);
-            data.array.forEach(row => {
-                console.log(row.id);
-                console.log(row.first_entry);
-                console.log(row.last_entry);
-            });
-        });
         //const insert = await conn.query("INSERT INTO ");
-        //const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
-	    //console.log(res);
+        const res = await conn.query("INSERT INTO esp_data.devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICAATE UPDATE last_entry = VALUES (last_entry)", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
+	    console.log(res);
     } catch(err) {
         throw err;
     }
