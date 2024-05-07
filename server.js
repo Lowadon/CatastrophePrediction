@@ -114,6 +114,7 @@ mqtt_client.on('message', (topic, message) => {
     console.log('Message:' + message);
     asyncFunction(message);
     console.log('success');
+    getData();
 });
 
 //VARIABLES
@@ -166,36 +167,22 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-    let connection;
-    connection = pool.getConnection();
-    const query = "SELECT * FROM entries";
-    connection.query(query, (err, result) => {
-        if (err) {
-            console.error("Database query error: " + err.message);
-            res.status(500).json({ error: "Internal Server Error" });
-        } else {
-            res.json(result);
-        }
-    });
-    connection.end();
+   getData(req, res);
 });
 
 async function getData(req, res)
 {
     let conn;
     conn = await pool.getConnection();
-    console.log("Query started");
-    const query = `SELECT * FROM entries;`;
-
+    const query = "SELECT * FROM entries;";
     conn.query(query, (error, results) => {
         if (error)
         {
             console.error("Database query error: " + error.message);
             results.status(500).json({ error: "Internal Server Error" });
         }
-        //callback(null, results);
         console.log("Great success");
-        res.json("Great success");
+        //res.json("Great success");
     });
 }
 
