@@ -34,14 +34,13 @@ const protocol = 'mqtt';
 const mqtt_broker = 'test.mosquitto.org';
 const mqtt_port = 1883;
 const mqtt_url = protocol + '://' + mqtt_broker + ':' + mqtt_port;
-console.log(mqtt_url);
 const mqtt_topic = 'est/katastrophenprojekt/maltebenjamin';
 const mqtt_client = mqtt.connect(mqtt_url, keepalive = 60);
 mqtt_client.connect();
 let topic = mqtt_client.subscribe(mqtt_topic);
 
 mqtt_client.on('connected', () => {
-    console.log('Connected to ' + mqtt_broker);
+    console.log('Connected to ' + mqtt_broker)
 });
 
 mqtt_client.on('message', (topic, message) => {
