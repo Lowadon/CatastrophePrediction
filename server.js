@@ -21,11 +21,11 @@ async function asyncFunction(message) {
         console.log(rows);
         console.log(jsonObj.device_id);
         const device = await conn.query("SELECT id FROM devices WHERE ID = " + jsonObj.device_id + ";", (error, results, fields) => {
-            if (error) {console.log(error); throw error;}
+            if (error) {console.log("Error: " + error); throw error;}
 
             let data = results;
 
-            console.log(data);
+            console.log("Data: " + data);
             data.array.forEach(row => {
                 console.log(row.id);
                 console.log(row.first_entry);
