@@ -180,7 +180,7 @@ app.get("/data", (req, res) => {
     let conn;
     conn = pool.getConnection();
     const query = "SELECT * FROM entries";
-    connection.query(query, (err, result) => {
+    conn.query(query, (err, result) => {
         if (err) {
             console.error("Database query error: " + err.message);
             res.status(500).json({ error: "Internal Server Error" });
