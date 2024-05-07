@@ -166,6 +166,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
+    let connection;
+    connection = pool.getConnection();
     const query = "SELECT * FROM entries";
     connection.query(query, (err, result) => {
         if (err) {
@@ -175,6 +177,7 @@ app.get("/data", (req, res) => {
             res.json(result);
         }
     });
+    connection.end();
 });
 
 async function getData(req, res)
