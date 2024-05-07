@@ -1,3 +1,4 @@
+import Chart from 'chart.js/auto';
 // List entries in database
 /*
 $(document).ready(function () {
@@ -18,7 +19,7 @@ $(document).ready(function () {
 });
 */
 
-import Chart from 'chart.js/auto';
+
     
 (async function() {
 const data = [
