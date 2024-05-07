@@ -17,14 +17,14 @@ async function asyncFunction(message) {
     let jsonObj = JSON.parse(message);
     try {
         conn = await pool.getConnection();
-        const rows = await conn.query("Select 1 as val");
-        console.log(rows);
-        console.log("Device ID: " + jsonObj.device_id);
-        console.log("Temperature: " + jsonObj.temperature);
-        console.log("Altitude: " + jsonObj.altitude);
-        console.log("Air Pressure: " + jsonObj.airPressure);
-        console.log("Humidity: " + jsonObj.humidity);
-        console.log("Timestamp: " + jsonObj.timestamp);
+        //const rows = await conn.query("Select 1 as val");
+        //console.log(rows);
+        //console.log("Device ID: " + jsonObj.device_id);
+        //console.log("Temperature: " + jsonObj.temperature);
+        //console.log("Altitude: " + jsonObj.altitude);
+        //console.log("Air Pressure: " + jsonObj.airPressure);
+        //console.log("Humidity: " + jsonObj.humidity);
+        //console.log("Timestamp: " + jsonObj.timestamp);
         
         insert_device(conn, jsonObj.device_id, jsonObj.timestamp);
         print_devices(conn);
@@ -83,6 +83,7 @@ function insert_device(conn, device_id, timestamp)
         VALUES (?, ?, ?)
         ON DUPLICATE KEY UPDATE last_entry = VALUES(last_entry);
     `;
+    console.log(query);
     conn.query(query, [device_id, Date(timestamp).toISOString(), Date(timestamp).toISOString()], (error, results) => {
         if (error) 
         {
