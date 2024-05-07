@@ -11,6 +11,8 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <time.h>
+#include <NTPClient.h>
+#include <WiFiUdp.h>
 
 //Geräte-ID definieren falls mehrere ESPs verwendet werden, um die Daten zu unterscheiden
 #define ESP_ID 000001;
@@ -60,6 +62,9 @@ Adafruit_BMP085 bmp180;
 WiFiClient espClient;
 PubSubClient client(espClient);
 
+WiFiUDP ntpUDP;
+
+
 //Initialisierung der Verbindungsfunktionen
 bool wifiConnect(String, String);
 bool brokerConnect(const char *, int);
@@ -73,12 +78,15 @@ void setup()
   seaLevelPressure = bmp180.readSealevelPressure(currentAltitude);
   WiFi.mode(WIFI_STA);
   wifiConnect(ssid, password);
+  timeClient.begin();
   brokerConnect(brokerAddress, brokerPort);
 }
 
 
 void loop() 
 {
+  timeClient.update();
+  Serial.println();
   //Schreiben der Sensordaten in die dafür vorgesehene Klasse
   sensorData* currData = new sensorData
   (
