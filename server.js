@@ -84,7 +84,9 @@ function insert_device(conn, device_id, timestamp)
         ON DUPLICATE KEY UPDATE last_entry = VALUES(last_entry);
     `;
     console.log(query);
-    conn.query(query, [device_id, Date(timestamp).toISOString(), Date(timestamp).toISOString()], (error, results) => {
+    date = Date(timestamp).toISOString().split('T')[0];
+    console.log(date);
+    conn.query(query, [device_id, date, date], (error, results) => {
         if (error) 
         {
             console.error('Error executing the query:', error);
