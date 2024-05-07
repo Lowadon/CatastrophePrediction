@@ -54,7 +54,7 @@ function print_measurementData(conn)
     });
 }
 
-function insert_device(conn, device_id, timestamp)
+async function insert_device(conn, device_id, timestamp)
 {
     const query = `
         INSERT INTO esp_data.devices (id, first_entry, last_entry)
