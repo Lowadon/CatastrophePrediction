@@ -76,7 +76,7 @@ function print_measurementData(conn)
     });
 }
 
-function insert_device(conn, device_id, timestamp)
+async function insert_device(conn, device_id, timestamp)
 {
     const query = `
         INSERT INTO esp_data.devices (id, first_entry, last_entry)
@@ -84,8 +84,8 @@ function insert_device(conn, device_id, timestamp)
         ON DUPLICATE KEY UPDATE last_entry = VALUES(last_entry);
     `;
     console.log(query);
-    constle.log(timestamp);
-    conn.query(query, [device_id, timestamp, timestamp], (error, results) => {
+    console.log(timestamp);
+    const res = await conn.query(query, [device_id, timestamp, timestamp], (error, results) => {
         if (error) 
         {
             console.error('Error executing the query:', error);
@@ -93,6 +93,7 @@ function insert_device(conn, device_id, timestamp)
         }
         console.log('Query executed successfully:', results);
     });
+    console.log(res);
 }
 
 function insert_entry(conn, jsonObj)
