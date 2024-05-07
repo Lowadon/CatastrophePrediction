@@ -1,3 +1,4 @@
+DROP DATABASE esp_data;
 CREATE DATABASE IF NOT EXISTS esp_data;
 Use esp_data;
 
