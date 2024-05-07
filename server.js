@@ -30,7 +30,8 @@ async function asyncFunction() {
 
 //MQTT
 const mqtt = require('mqtt');
-const mqtt_broker = 'test.mosquitto.org';
+const protocol = 'mqtt';
+const mqtt_broker = 'test.mosquitto.org:1883';
 const mqtt_topic = 'bfk/efi222/LM';
 const mqtt_client = MQTTClient(mqtt_broker, keepalive = 60);
 mqtt_client.connect();
