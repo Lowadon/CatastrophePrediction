@@ -33,9 +33,14 @@ const mqtt = require('mqtt');
 const protocol = 'mqtt';
 const mqtt_broker = 'test.mosquitto.org:1883';
 const mqtt_topic = 'bfk/efi222/LM';
-const mqtt_client = MQTTClient(mqtt_broker, keepalive = 60);
+const mqtt_client = mqtt.connect(mqtt_broker, keepalive = 60);
 mqtt_client.connect();
 let topic = mqtt_client.subscribe(mqtt_topic);
+
+mqtt_client.on('connected', () => {
+    console.log('Connected to ' + mqtt_broker);
+});
+
 mqtt_client.on('message', (topic, message) => {
     console.log(message)
 });
