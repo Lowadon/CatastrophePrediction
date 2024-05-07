@@ -11,14 +11,10 @@ CREATE TABLE IF NOT EXISTS devices(
 DROP TABLE IF EXISTS entries;
 CREATE TABLE IF NOT EXISTS entries(
     id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
-    esp_id INT UNSIGNED NOT NULL,
+    esp_id INT UNSIGNED NOT NULL REFERENCES devices(id) ON DELETE CASCADE ON UPDATE RESTRICT,
     altitude FLOAT,
     pressure FLOAT,
     temperature FLOAT,
     humidity FLOAT,
-    recorded_at DATETIME,
-    CONSTRAINT 'fk_esp_id'
-        FOREIGN KEY (esp_id) REFERENCES devices (id)
-        ON DELETE CASCADE
-        ON UPDATE RESTRICT
+    recorded_at DATETIME
 );
