@@ -177,8 +177,8 @@ async function readData(req, res) {
       data = await conn.query("SELECT * FROM entries");
       //console.log(rows); 
       console.log("Data fetched")
-      parsedData = JSON.parse(JSON.stringify(data));
-      res.json(parsedData);
+      //parsedData = JSON.parse(JSON.stringify(data));
+      res.json(data);
   
     } catch (err) {
       throw err;
@@ -186,6 +186,10 @@ async function readData(req, res) {
     } finally {
       if (conn) conn.end();
     }
+  }
+
+  BigInt.prototype['toJSON'] = function () { 
+    return this.toString()
   }
 
 function get_index(req, res) {
