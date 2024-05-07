@@ -166,6 +166,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
+    console.log("Query requested");
     getData(req, res);
 });
 
