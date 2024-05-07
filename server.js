@@ -174,8 +174,8 @@ async function getData(req, res)
 {
     let conn;
     conn = await pool.getConnection();
+    console.log("Query started");
     conn.query("SELECT * FROM entries;", (error, results) => {
-        console.log("Query started");
         if (error)
         {
             //return callback(error, null);
