@@ -34,14 +34,14 @@ float currentAltitude = 469;
 class sensorData
 {
   public:
-    sensorData(float temperature, float humidity, float altitude, float airPressure)
-      : temperature(temperature)
+    sensorData(std::time_t now, float temperature, float humidity, float altitude, float airPressure)
+      : now(now)
+      , temperature(temperature)
       , humidity(humidity)
       , altitude(altitude)
       , airPressure(airPressure)
     {
       //Erzeugung eines verwendbaren, aktuellen timestamps
-      std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) + 2*60*60;
       strftime(timestamp, 20, "%Y-%m-%d %H:%M:%S" ,localtime(&now));
     }
     ~sensorData() {}
@@ -86,11 +86,11 @@ void setup()
 void loop() 
 {
   timeClient.update();
-  Serial.println(timeClient.getFormattedTime());
   //Schreiben der Sensordaten in die dafür vorgesehene Klasse
   sensorData* currData = new sensorData
   (
-    (dht.readTemperature() + bmp180.readTemperature())/2
+    timeClient.getEpochTime()
+    , (dht.readTemperature() + bmp180.readTemperature())/2
     , dht.readHumidity()
     , bmp180.readAltitude(seaLevelPressure)
     , (float)bmp180.readPressure()/100
