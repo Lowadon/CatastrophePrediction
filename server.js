@@ -115,7 +115,6 @@ mqtt_client.on('message', (topic, message) => {
     console.log('Message:' + message);
     asyncFunction(message);
     console.log('success');
-    readData();
 });
 
 //VARIABLES
@@ -168,18 +167,20 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-   getData(req, res);
+   read(req, res);
 });
 
-async function readData() {
+async function readData(req, res) {
     let conn;
     try {
       conn = await pool.getConnection();
-      const rows = await conn.query("SELECT * FROM entries");
-      console.log(rows); 
+      const data = await conn.query("SELECT * FROM entries");
+      //console.log(rows); 
+      res.json(data);
   
     } catch (err) {
       throw err;
+      
     } finally {
       if (conn) return conn.end();
     }
