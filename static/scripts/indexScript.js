@@ -1,6 +1,6 @@
 // List entries in database
 
-getData()
+function getData()
 {
     $.ajax({
         url: "/data",
