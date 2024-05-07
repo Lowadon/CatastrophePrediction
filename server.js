@@ -30,6 +30,7 @@ async function asyncFunction(message) {
     }
 }
 
+/*
 function print_devices(conn)
 {
     return new Promise((resolve, reject) => {
@@ -91,7 +92,7 @@ function insert_entry(conn, jsonObj)
         console.log('Query executed successfully:', results);
     });
 }
-
+*/
 
 
 //MQTT
@@ -114,7 +115,7 @@ mqtt_client.on('message', (topic, message) => {
     console.log('Message:' + message);
     asyncFunction(message);
     console.log('success');
-    getData();
+    readData();
 });
 
 //VARIABLES
@@ -170,21 +171,19 @@ app.get("/data", (req, res) => {
    getData(req, res);
 });
 
-async function getData(req, res)
-{
+async function readData() {
     let conn;
-    conn = await pool.getConnection();
-    const query = "SELECT * FROM entries;";
-    conn.query(query, (error, results) => {
-        if (error)
-        {
-            console.error("Database query error: " + error.message);
-            results.status(500).json({ error: "Internal Server Error" });
-        }
-        console.log("Great success");
-        //res.json("Great success");
-    });
-}
+    try {
+      conn = await pool.getConnection();
+      const rows = await conn.query("SELECT * FROM entries");
+      console.log(rows); 
+  
+    } catch (err) {
+      throw err;
+    } finally {
+      if (conn) return conn.end();
+    }
+  }
 
 function get_index(req, res) {
     res.render("pages/index", {
