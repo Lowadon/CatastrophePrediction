@@ -20,8 +20,8 @@ async function asyncFunction(message) {
         const rows = await conn.query("Select 1 as val");
         console.log(rows);
         console.log(jsonObj.device_id);
-        const device = await conn.query("SELECT id FROM devices WHERE ID = " + message.device_id, (error, results, fields) => {
-            if (error) throw error;
+        const device = await conn.query("SELECT id FROM devices WHERE ID = " + jsonObj.device_id + ";", (error, results, fields) => {
+            if (error) {console.log(error); throw error;}
 
             let data = results;
 
