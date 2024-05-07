@@ -26,7 +26,9 @@ async function asyncFunction(message) {
         console.log("Humidity: " + jsonObj.humidity);
         console.log("Timestamp: " + jsonObj.timestamp);
         
-        const device = await conn.query("SELECT id FROM devices WHERE ID = " + jsonObj.device_id + ";", (error, results, fields) => {
+        print_devices(conn, jsonObj.device_id);
+
+        const device = await conn.query("SELECT id FROM esp_data.devices WHERE ID = " + jsonObj.device_id + ";", (error, results, fields) => {
             if (error) {console.log("Error: " + error); throw error;}
 
             let data = results;
@@ -47,6 +49,18 @@ async function asyncFunction(message) {
     finally {
         if(conn) return conn.end();
     }
+}
+
+function print_devices(conn, device_id)
+{
+    return new Promise((resolve, reject) => {
+        resolve(
+            conn.queryStream("SELECT * FROM devices;")
+            .on("error", (err) => { console.error("Issue retrieving data from devices Table.", err); })
+            .on("fields", (meta) => { console.error("Fields metadata: ", meta); })
+            .on("data", (row) => { console.log('${row.id}, ${row.first_entry}, ${row.last_entry}'); })
+        )
+    });
 }
 
 //MQTT
