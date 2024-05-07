@@ -23,18 +23,6 @@
     <body onload = getData()>
         <h1>Helo</h1>
         <!-- <div style="width: 500px;"><canvas id="dimensions"></canvas></div><br/> -->
-        <script>
-            function getData()
-            {
-                fetch("/data")
-                .then(response=>response.json());
-
-                let data = fetch("/data");
-
-                console.log(data);
-                console.log("helo");
-            }
-        </script>
         <div style="width: 800px;">
             <canvas id="acquisitions"></canvas>
         </div>
