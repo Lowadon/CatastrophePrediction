@@ -30,8 +30,8 @@ async function asyncFunction() {
 
 //MQTT
 const mqtt = require('mqtt');
-const mqtt_client = mqtt.connect('mqtt://broker.hivemq.com');
-let topic = mqtt_client.subscribe('my/topic/here');
+const mqtt_client = mqtt.connect('test.mosquitto.org');
+let topic = mqtt_client.subscribe('bfk/efi222/LM');
 mqtt_client.on('message', (topic, message) => {
     console.log(message)
 });
