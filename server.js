@@ -55,7 +55,7 @@ function print_devices(conn, device_id)
 {
     return new Promise((resolve, reject) => {
         resolve(
-            conn.queryStream("SELECT * FROM devices;")
+            conn.queryStream("SELECT * FROM esp_data.devices;")
             .on("error", (err) => { console.error("Issue retrieving data from devices Table.", err); })
             .on("fields", (meta) => { console.error("Fields metadata: ", meta); })
             .on("data", (row) => { console.log('${row.id}, ${row.first_entry}, ${row.last_entry}'); })
