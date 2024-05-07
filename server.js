@@ -99,9 +99,12 @@ async function getData(callback)
     conn.query("SELECT * FROM entries;", (error, results) => {
         if (error)
         {
-            return callback(error, null);
+            //return callback(error, null);
+            console.log("Error getting data from DB");
         }
-        callback(null, results);
+        //callback(null, results);
+        console.log("Great success");
+        return ("Great success");
     });
 }
 
@@ -177,18 +180,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-    let conn;
-    conn = pool.getConnection();
-    const query = "SELECT * FROM entries";
-    conn.query(query, (err, result) => {
-        if (err) {
-            console.error("Database query error: " + err.message);
-            res.status(500).json({ error: "Internal Server Error" });
-        } else {
-            res.json(result);
-        }
-    });
-    conn.end();
+    res.json(getData());
 });
 
 function get_index(req, res) {
