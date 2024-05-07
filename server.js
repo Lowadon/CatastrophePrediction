@@ -176,6 +176,7 @@ async function readData(req, res) {
       conn = await pool.getConnection();
       const data = await conn.query("SELECT * FROM entries");
       //console.log(rows); 
+      console.log("Data fetched")
       res.json(data);
   
     } catch (err) {
