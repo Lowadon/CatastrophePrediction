@@ -84,9 +84,8 @@ function insert_device(conn, device_id, timestamp)
         ON DUPLICATE KEY UPDATE last_entry = VALUES(last_entry);
     `;
     console.log(query);
-    date = Date(timestamp);
-    console.log(date.toISOString().slice(0, 19).replace('T', ' '));
-    conn.query(query, [device_id, date.toISOString().slice(0, 19).replace('T', ' '), date.toISOString().slice(0, 19).replace('T', ' ')], (error, results) => {
+    constle.log(timestamp);
+    conn.query(query, [device_id, timestamp, timestamp], (error, results) => {
         if (error) 
         {
             console.error('Error executing the query:', error);
@@ -104,7 +103,7 @@ function insert_entry(conn, jsonObj)
     INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at)
     VALUES (?, ?, ?, ?, ?, ?);
     `;
-    conn.query(query, [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.humidity, Date(jsonObj.timestamp).toISOString()], (error, results) => {
+    conn.query(query, [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.humidity, timestamp], (error, results) => {
         if(error) 
         {
             console.error('Error executing the query:', error);
