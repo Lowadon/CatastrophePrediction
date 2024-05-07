@@ -177,17 +177,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-    /*
     getData((error, data) => {    
         if(error)
         {
             res.status(500).send('Error retrieving data!');
             return;    
         }
-        res.send(data);
+        res.json(data);
     });
-    */
-   res.json("gday");
 });
 
 function get_index(req, res) {
