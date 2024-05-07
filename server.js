@@ -177,14 +177,13 @@ async function readData(req, res) {
       const data = await conn.query("SELECT * FROM entries");
       //console.log(rows); 
       console.log("Data fetched")
+      res.json(data);
   
     } catch (err) {
       throw err;
 
     } finally {
       if (conn) conn.end();
-      if (!data == null) return data;
-      else return;
     }
   }
 
