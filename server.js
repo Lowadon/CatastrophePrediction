@@ -166,8 +166,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-    console.log("Query requested");
-    getData(req, res);
+    const query = "SELECT * FROM entries";
+    connection.query(query, (err, result) => {
+        if (err) {
+            console.error("Database query error: " + err.message);
+            res.status(500).json({ error: "Internal Server Error" });
+        } else {
+            res.json(result);
+        }
+    });
 });
 
 async function getData(req, res)
@@ -180,8 +187,8 @@ async function getData(req, res)
     conn.query(query, (error, results) => {
         if (error)
         {
-            console.error("Database query error: " + err.message);
-            res.status(500).json({ error: "Internal Server Error" });
+            console.error("Database query error: " + error.message);
+            results.status(500).json({ error: "Internal Server Error" });
         }
         //callback(null, results);
         console.log("Great success");
