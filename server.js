@@ -167,7 +167,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-   read(req, res);
+   readData(req, res);
 });
 
 async function readData(req, res) {
@@ -180,7 +180,7 @@ async function readData(req, res) {
   
     } catch (err) {
       throw err;
-      
+
     } finally {
       if (conn) return conn.end();
     }
