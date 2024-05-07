@@ -175,12 +175,13 @@ async function getData(req, res)
     let conn;
     conn = await pool.getConnection();
     console.log("Query started");
+    const query = `SELECT * FROM entries;`;
 
-    await conn.query(`SELECT * FROM entries;`, (error, results) => {
+    conn.query(query, (error, results) => {
         if (error)
         {
-            //return callback(error, null);
-            console.log("Error getting data from DB");
+            console.error("Database query error: " + err.message);
+            res.status(500).json({ error: "Internal Server Error" });
         }
         //callback(null, results);
         console.log("Great success");
