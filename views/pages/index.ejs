@@ -20,13 +20,16 @@
 
     
 
-    <body>
+    <body onload = getData()>
         <h1>Helo</h1>
         <!-- <div style="width: 500px;"><canvas id="dimensions"></canvas></div><br/> -->
         <script>
-            fetch("/data")
-            .then(response=>response.json())
-            .then(data=>console.log(data))
+            function getData()
+            {
+                fetch("/data")
+                .then(response=>response.json())
+                .then(data=>console.log(data))
+            }
         </script>
         <div style="width: 800px;">
             <canvas id="acquisitions"></canvas>
