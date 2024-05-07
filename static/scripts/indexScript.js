@@ -1,4 +1,4 @@
-import Chart from 'chart.js/auto';
+import Chart from 'chart.js/auto'
 // List entries in database
 /*
 $(document).ready(function () {
