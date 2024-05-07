@@ -15,6 +15,7 @@ const pool = mariadb.createPool({
 async function asyncFunction(message) {
     let conn;
     let jsonObj = JSON.parse(message);
+    console.log(jsonObj);
     try {
         conn = await pool.getConnection();
         const res = await conn.query("INSERT INTO esp_data.devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICATE UPDATE last_entry = VALUES (last_entry);", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
