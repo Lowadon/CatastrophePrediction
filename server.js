@@ -18,8 +18,8 @@ async function asyncFunction() {
         conn = await pool.getConnection();
         const rows = await conn.query("Select 1 as val");
         console.log(rows);
-        const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
-	    console.log(res);
+        //const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
+	    //console.log(res);
     } catch(err) {
         throw err;
     }
@@ -45,6 +45,7 @@ mqtt_client.on('connected', () => {
 
 mqtt_client.on('message', (topic, message) => {
     console.log('Message:' + message)
+    asyncFunction();
 });
 
 //VARIABLES
