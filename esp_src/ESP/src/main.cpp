@@ -63,7 +63,7 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 
 WiFiUDP ntpUDP;
-
+NTPClient timeClient(ntpUDP, "pool.ntp.org", 7200);
 
 //Initialisierung der Verbindungsfunktionen
 bool wifiConnect(String, String);
@@ -86,7 +86,7 @@ void setup()
 void loop() 
 {
   timeClient.update();
-  Serial.println();
+  Serial.println(timeClient.getFormattedTime());
   //Schreiben der Sensordaten in die dafür vorgesehene Klasse
   sensorData* currData = new sensorData
   (
