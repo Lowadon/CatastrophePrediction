@@ -32,7 +32,7 @@ async function asyncFunction() {
 const mqtt = require('mqtt');
 const mqtt_client = mqtt.connect('mqtt://broker.hivemq.com');
 let topic = mqtt_client.subscribe('my/topic/here');
-client.on('message', (topic, message) => {
+mqtt_client.on('message', (topic, message) => {
     console.log(message)
 });
 
