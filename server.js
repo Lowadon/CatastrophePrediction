@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
-const mysql = require("mysql2");
 
 //MariaDB
 const mariadb = require('mariadb');
@@ -16,13 +15,9 @@ const pool = mariadb.createPool({
 async function asyncFunction(message) {
     let conn;
     let jsonObj = JSON.parse(message);
-    console.log(jsonObj);
     try {
         conn = await pool.getConnection();
         const res = await conn.query("INSERT INTO devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE last_entry = VALUES (last_entry);", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
-        //let string = "INSERT INTO devices (id, first_entry, last_entry) VALUES (" + jsonObj.device_id + ",'" + jsonObj.timestamp + "','" + jsonObj.timestamp + "') ON DUPLICATE KEY UPDATE last_entry = VALUES ('" + jsonObj.timestamp +"');";
-        //console.log(string);
-        //const res = await conn.query(string);
 	    console.log(res);
         const entry = await conn.query("INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at) VALUES (?, ?, ?, ?, ?, ?);", [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.temperature, jsonObj.humidity, jsonObj.timestamp]);
         console.log(entry);
@@ -31,7 +26,6 @@ async function asyncFunction(message) {
         throw err;
     }
     finally {
-        console.log("finally");
         if(conn) return conn.end();
     }
 }
@@ -60,7 +54,7 @@ function print_measurementData(conn)
     });
 }
 
-async function insert_device(conn, device_id, timestamp)
+function insert_device(conn, device_id, timestamp)
 {
     const query = `
         INSERT INTO esp_data.devices (id, first_entry, last_entry)
@@ -98,9 +92,22 @@ function insert_entry(conn, jsonObj)
     });
 }
 
+async function getData(callback)
+{
+    let conn;
+    conn = await pool.getConnection();
+    conn.query("SELECT * FROM entries;", (error, results) => {
+        if (error)
+        {
+            return callback(error, null);
+        }
+        callback(null, results);
+    });
+}
+
 //MQTT
 const mqtt = require('mqtt');
-const { each } = require("jquery");
+const { each, error, ready } = require("jquery");
 const protocol = 'mqtt';
 const mqtt_broker = 'test.mosquitto.org';
 //const mqtt_broker = 'mqtt.eclipseprojects.io';
@@ -108,15 +115,14 @@ const mqtt_port = 1883;
 const mqtt_url = protocol + '://' + mqtt_broker + ':' + mqtt_port;
 const mqtt_topic = 'est/katastrophenprojekt/espdaten';
 const mqtt_client = mqtt.connect(mqtt_url, keepalive = 60);
-mqtt_client.connect();
 let topic = mqtt_client.subscribe(mqtt_topic);
 
-mqtt_client.on('connected', () => {
-    console.log('Connected to: ' + mqtt_broker)
+mqtt_client.on('connect', () => {
+    console.log('Connected to: ' + mqtt_broker);
 });
 
 mqtt_client.on('message', (topic, message) => {
-    console.log('Message:' + message)
+    console.log('Message:' + message);
     asyncFunction(message);
     console.log('success');
 });
@@ -170,18 +176,29 @@ app.get("/", (req, res) => {
     get_index(req, res);
 });
 
+app.get("/data", (req, res) => {
+    getData((error, data) => {    
+        if(error)
+        {
+            res.status(500).send('Error retrieving data!');
+            return;    
+        }
+        res.send(data);
+    });
+});
+
 function get_index(req, res) {
     res.render("pages/index", {
         loggedin: req.session.loggedin,
     });
 }
 
-app.get("/ticketform", (req, res) => {
-    get_ticketform(req, res);
-});
-
-function get_ticketform(req, res) {
-    res.render("pages/ticketform", {
-        loggedin: req.session.loggedin,
-    });
-}
+//app.get("/ticketform", (req, res) => {
+//    get_ticketform(req, res);
+//});
+//
+//function get_ticketform(req, res) {
+//    res.render("pages/ticketform", {
+//        loggedin: req.session.loggedin,
+//    });
+//}
