@@ -18,6 +18,7 @@ async function asyncFunction(message) {
         conn = await pool.getConnection();
         const rows = await conn.query("Select 1 as val");
         console.log(rows);
+        console.log(message.device_id);
         const device = await conn.query("SELECT id FROM devices WHERE ID = " + message.device_id, (error, results, fields) => {
             if (error) throw error;
 
