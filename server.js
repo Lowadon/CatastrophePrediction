@@ -12,12 +12,25 @@ const pool = mariadb.createPool({
     connectionLimit: 1
 });
 
-async function asyncFunction() {
+async function asyncFunction(message) {
     let conn;
     try {
         conn = await pool.getConnection();
         const rows = await conn.query("Select 1 as val");
         console.log(rows);
+        const device = await conn.query("SELECT id FROM devices WHERE ID = " + message.device_id, (error, results, fields) => {
+            if (error) throw error;
+
+            let data = results;
+
+            console.log(data);
+            data.array.forEach(row => {
+                console.log(row.id);
+                console.log(row.first_entry);
+                console.log(row.last_entry);
+            });
+        });
+        //const insert = await conn.query("INSERT INTO ");
         //const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
 	    //console.log(res);
     } catch(err) {
@@ -30,6 +43,7 @@ async function asyncFunction() {
 
 //MQTT
 const mqtt = require('mqtt');
+const { each } = require("jquery");
 const protocol = 'mqtt';
 const mqtt_broker = 'test.mosquitto.org';
 const mqtt_port = 1883;
@@ -45,7 +59,7 @@ mqtt_client.on('connected', () => {
 
 mqtt_client.on('message', (topic, message) => {
     console.log('Message:' + message)
-    asyncFunction();
+    asyncFunction(message);
 });
 
 //VARIABLES
