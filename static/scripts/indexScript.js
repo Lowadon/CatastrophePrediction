@@ -11,7 +11,7 @@ function getData()
             console.log(data);
         },
         error: function (error) {
-            console.error("Error fetching data");
+            console.error("Error fetching data", error);
         },
     });
 }
