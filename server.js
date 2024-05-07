@@ -26,7 +26,8 @@ async function asyncFunction(message) {
         console.log("Humidity: " + jsonObj.humidity);
         console.log("Timestamp: " + jsonObj.timestamp);
         
-        print_devices(conn, jsonObj.device_id);
+        insert_device(conn, jsonObj.device_id, jsonObj.timestamp);
+        print_devices(conn);
 
         const device = await conn.query("SELECT id FROM esp_data.devices WHERE ID = " + jsonObj.device_id + ";", (error, results, fields) => {
             if (error) {console.log("Error: " + error); throw error;}
@@ -51,7 +52,7 @@ async function asyncFunction(message) {
     }
 }
 
-function print_devices(conn, device_id)
+function print_devices(conn)
 {
     return new Promise((resolve, reject) => {
         resolve(
@@ -60,6 +61,53 @@ function print_devices(conn, device_id)
             .on("fields", (meta) => { console.error("Fields metadata: ", meta); })
             .on("data", (row) => { console.log('${row.id}, ${row.first_entry}, ${row.last_entry}'); })
         )
+    });
+}
+
+function print_measurementData(conn)
+{
+    return new Promise((resolve, reject) => {
+        resolve(
+            conn.queryStream("SELECT * FROM esp_data.entries;")
+            .on("error", (err) => { console.error("Issue retrieving data from devices Table.", err); })
+            .on("fields", (meta) => { console.error("Fields metadata: ", meta); })
+            .on("data", (row) => { console.log('${row.id}, ${row.first_entry}, ${row.last_entry}'); })
+        )
+    });
+}
+
+function insert_device(conn, device_id, timestamp)
+{
+    const query = `
+        INSERT INTO esp_data.devices (id, first_entry, last_entry)
+        VALUES (?, ?, ?)
+        ON DUPLICATE KEY UPDATE last_entry = VALUES(last_entry);
+    `;
+    conn.query(query, [device_id, timestamp, timestamp], (error, results) => {
+        if (error) 
+        {
+            console.error('Error executing the query:', error);
+            return;
+        }
+        console.log('Query executed successfully:', results);
+    });
+}
+
+function insert_entry(conn, jsonObj)
+{
+    insert_device(conn, jsonObj.device_id, jsonObj.timestamp);
+
+    const query = `
+    INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at)
+    VALUES (?, ?, ?, ?, ?, ?);
+    `;
+    conn.query(query, [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.humidity, jsonObj.timestamp], (error, results) => {
+        if(error) 
+        {
+            console.error('Error executing the query:', error);
+            return;
+        }
+        console.log('Query executed successfully:', results);
     });
 }
 
