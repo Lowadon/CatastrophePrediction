@@ -180,7 +180,7 @@ app.get("/data", (req, res) => {
     getData((error, data) => {    
         if(error)
         {
-            res.status(500).send('Error retrieving data!');
+            res.status(500).json('Error retrieving data!');
             return;    
         }
         res.json(data);
