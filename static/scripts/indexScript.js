@@ -8,7 +8,7 @@ function getData()
         dataType: "json",
         success: function (data) 
         {
-            console.log(data);
+            console.log("Got some data: ", data);
         },
         error: function (error) {
             console.error("Error fetching data", error);
