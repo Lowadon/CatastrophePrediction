@@ -12,26 +12,15 @@ const pool = mariadb.createPool({
     connectionLimit: 1
 });
 
-async function asyncFunction(message) {
+async function insertData(message) {
     let conn;
     let jsonObj = JSON.parse(message);
     try {
         conn = await pool.getConnection();
-        //const rows = await conn.query("Select 1 as val");
-        //console.log(rows);
-        //console.log("Device ID: " + jsonObj.device_id);
-        //console.log("Temperature: " + jsonObj.temperature);
-        //console.log("Altitude: " + jsonObj.altitude);
-        //console.log("Air Pressure: " + jsonObj.airPressure);
-        //console.log("Humidity: " + jsonObj.humidity);
-        //console.log("Timestamp: " + jsonObj.timestamp);
-        
-        //insert_device(conn, jsonObj.device_id, jsonObj.timestamp);
-        //print_devices(conn);
+        const device = await conn.query("INSERT INTO esp_data.devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICATE UPDATE last_entry = VALUES (last_entry);", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
+	    console.log(device);
 
-        //const insert = await conn.query("INSERT INTO ");
-        const res = await conn.query("INSERT INTO esp_data.devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICAATE UPDATE last_entry = VALUES (last_entry)", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
-	    console.log(res);
+        const entry = await conn.query("INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at) VALUES (?, ?, ?, ?, ?, ?);", [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.humidity, timestamp]);
     } catch(err) {
         throw err;
     }
@@ -120,7 +109,7 @@ mqtt_client.on('connected', () => {
 
 mqtt_client.on('message', (topic, message) => {
     console.log('Message:' + message)
-    asyncFunction(message);
+    insertData(message);
 });
 
 //VARIABLES
