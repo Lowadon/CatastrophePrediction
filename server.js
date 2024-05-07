@@ -41,7 +41,7 @@ client.on('message', (topic, message) => {
 //const dbUser = "skyryll";
 //const dbPass = "SkyDbAccess";
 //const dbDatabase = "systeminfo";
-const nodeAppPort = 3000;
+const nodeAppPort = 8080;
 
 // expose static path
 app.use(express.static("static"));
