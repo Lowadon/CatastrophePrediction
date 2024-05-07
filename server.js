@@ -3,11 +3,44 @@ const app = express();
 const session = require("express-session");
 const mysql = require("mysql2");
 
+//MariaDB
+const mariadb = require('mariadb');
+const pool = mariadb.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'toor',
+    connectionLimit: 1
+});
+
+async function asyncFunction() {
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const rows = await conn.query("Select 1 as val");
+        console.log(rows);
+        const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
+	    console.log(res);
+    } catch(err) {
+        throw err;
+    }
+    finally {
+        if(conn) return conn.end();
+    }
+}
+
+//MQTT
+const mqtt = require('mqtt');
+const mqtt_client = mqtt.connect('mqtt://broker.hivemq.com');
+topic.mqtt_client.subscribe('my/topic/here');
+client.on('message', (topic, message) => {
+    console.log(message)
+});
+
 //VARIABLES
-const dbHost = "localhost";
-const dbUser = "skyryll";
-const dbPass = "SkyDbAccess";
-const dbDatabase = "systeminfo";
+//const dbHost = "localhost";
+//const dbUser = "skyryll";
+//const dbPass = "SkyDbAccess";
+//const dbDatabase = "systeminfo";
 const nodeAppPort = 3000;
 
 // expose static path
@@ -34,18 +67,18 @@ app.listen(nodeAppPort, () => {
 });
 
 //connect to local database
-const connection = mysql.createConnection({
-    host: dbHost,
-    user: dbUser,
-    password: dbPass,
-    database: dbDatabase,
-});
+//const connection = mysql.createConnection({
+//    host: dbHost,
+//    user: dbUser,
+//    password: dbPass,
+//    database: dbDatabase,
+//});
 
 // connection test
-connection.connect(function (error) {
-    if (error) throw error;
-    else console.log("connection to database successful");
-});
+//connection.connect(function (error) {
+//    if (error) throw error;
+//    else console.log("connection to database successful");
+//});
 
 // route pages
 app.get("/", (req, res) => {
@@ -67,26 +100,3 @@ function get_ticketform(req, res) {
         loggedin: req.session.loggedin,
     });
 }
-
-app.get("/getSystemInfo", (req, res) => {
-    const query = "SELECT * FROM systemvalues ORDER BY date ASC";
-    connection.query(query, (err, result) => {
-        if (err) {
-            console.error("Database query error: " + err.message);
-            res.status(500).json({ error: "Internal Server Error" });
-        } else {
-            res.json(result);
-        }
-    });
-});
-
-app.post("/ticketform", function (req, res) {
-    var errorName = req.body.errorName;
-    var description = req.body.description;
-    const query = "INSERT INTO tickets (errorName, description) VALUES (?,?)";
-    connection.query(query, [errorName, description], function (err, result) {
-        if (err) throw err;
-        res.status(200);
-        alert("Successfully saved to database");
-    });
-});
