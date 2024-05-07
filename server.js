@@ -177,6 +177,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
+    /*
     getData((error, data) => {    
         if(error)
         {
@@ -185,6 +186,8 @@ app.get("/data", (req, res) => {
         }
         res.send(data);
     });
+    */
+   res.send("gday");
 });
 
 function get_index(req, res) {
