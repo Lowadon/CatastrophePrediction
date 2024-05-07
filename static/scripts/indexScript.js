@@ -1,4 +1,5 @@
 // List entries in database
+/*
 $(document).ready(function () {
     $.ajax({
         url: "/getSystemInfo",
@@ -15,14 +16,34 @@ $(document).ready(function () {
         },
     });
 });
+*/
 
-function createEntry(entry) {
-    return `
-    <div class="row">
-        <div class="col-sm listentry">${entry.date}</div>
-        <div class="col-sm listentry">${entry.temp}°C</div>
-        <div class="col-sm listentry">${entry.avgload1}</div>
-        <div class="col-sm listentry">${entry.avgload5}</div>
-        <div class="col-sm listentry">${entry.avgload15}</div>
-    </div>`;
-}
+import Chart from 'chart.js/auto';
+    
+(async function() {
+const data = [
+    { year: 2010, count: 10 },
+    { year: 2011, count: 20 },
+    { year: 2012, count: 15 },
+    { year: 2013, count: 25 },
+    { year: 2014, count: 22 },
+    { year: 2015, count: 30 },
+    { year: 2016, count: 28 },
+];
+
+new Chart(
+    document.getElementById('acquisitions'),
+    {
+    type: 'bar',
+    data: {
+        labels: data.map(row => row.year),
+        datasets: [
+        {
+            label: 'Acquisitions by year',
+            data: data.map(row => row.count)
+        }
+        ]
+    }
+    }
+);
+})();
