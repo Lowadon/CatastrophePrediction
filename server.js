@@ -17,10 +17,9 @@ async function insertData(message) {
     let jsonObj = JSON.parse(message);
     try {
         conn = await pool.getConnection();
-        const device = await conn.query("INSERT INTO esp_data.devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICATE UPDATE last_entry = VALUES (last_entry);", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
-	    console.log(device);
-
-        const entry = await conn.query("INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at) VALUES (?, ?, ?, ?, ?, ?);", [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.humidity, timestamp]);
+        const res = await conn.query("INSERT INTO esp_data.devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICATE UPDATE last_entry = VALUES (last_entry);", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
+	    console.log(res);
+        //const entry = await conn.query("INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at) VALUES (?, ?, ?, ?, ?, ?);", [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.humidity, timestamp]);
     } catch(err) {
         throw err;
     }
@@ -95,7 +94,8 @@ function insert_entry(conn, jsonObj)
 const mqtt = require('mqtt');
 const { each } = require("jquery");
 const protocol = 'mqtt';
-const mqtt_broker = 'test.mosquitto.org';
+//const mqtt_broker = 'test.mosquitto.org';
+const mqtt_broker = 'broker.hivemq.com';
 const mqtt_port = 1883;
 const mqtt_url = protocol + '://' + mqtt_broker + ':' + mqtt_port;
 const mqtt_topic = 'est/katastrophenprojekt/espdaten';
