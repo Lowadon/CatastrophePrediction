@@ -108,15 +108,15 @@ const mqtt_port = 1883;
 const mqtt_url = protocol + '://' + mqtt_broker + ':' + mqtt_port;
 const mqtt_topic = 'est/katastrophenprojekt/espdaten';
 const mqtt_client = mqtt.connect(mqtt_url, keepalive = 60);
-mqtt_client.connect();
+//mqtt_client.connect();
 let topic = mqtt_client.subscribe(mqtt_topic);
 
-mqtt_client.on('connected', () => {
-    console.log('Connected to: ' + mqtt_broker)
+mqtt_client.on('connect', () => {
+    console.log('Connected to: ' + mqtt_broker);
 });
 
 mqtt_client.on('message', (topic, message) => {
-    console.log('Message:' + message)
+    console.log('Message:' + message);
     asyncFunction(message);
     console.log('success');
 });
