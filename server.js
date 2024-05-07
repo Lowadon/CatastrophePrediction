@@ -177,7 +177,8 @@ async function readData(req, res) {
       data = await conn.query("SELECT * FROM entries");
       //console.log(rows); 
       console.log("Data fetched")
-      res.send(data);
+      parsedData = JSON.parse(data);
+      res.json(parsedData);
   
     } catch (err) {
       throw err;
