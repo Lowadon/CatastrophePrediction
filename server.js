@@ -20,7 +20,7 @@ async function asyncFunction(message) {
     try {
         conn = await pool.getConnection();
         //const res = await conn.query("INSERT INTO devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICATE UPDATE last_entry = VALUES (last_entry);", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
-        let string = "INSERT INTO devices (id, first_entry, last_entry) VALUES (" + jsonObj.device_id + "," + jsonObj.timestamp + "," + jsonObj.timestamp + ") ON DUPLICATE UPDATE last_entry = VALUES (" + jsonObj.timestamp +");";
+        let string = "INSERT INTO devices (id, first_entry, last_entry) VALUES (" + jsonObj.device_id + ",'" + jsonObj.timestamp + "','" + jsonObj.timestamp + "') ON DUPLICATE UPDATE last_entry = VALUES ('" + jsonObj.timestamp +"');";
         console.log(string);
         const res = await conn.query(string);
 	    console.log(res);
