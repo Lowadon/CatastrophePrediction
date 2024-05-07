@@ -1,20 +1,24 @@
-CREATE DATABASE IF NOT EXISTS systeminfo;
-USE systeminfo;
+CREATE DATABASE IF NOT EXISTS esp_data;
+Use esp_data;
 
-DROP TABLE IF EXISTS systemvalues;
-CREATE TABLE IF NOT EXISTS systemvalues(
-    date datetime NOT NULL,
-    temp varchar(15),
-    avgload1 float,
-    avgload5 float,
-    avgload15 float,
-    PRIMARY KEY (date)
-);
+DROP TABLE IF EXISTS devices;
+CREATE TABLE IF NOT EXISTS devices(
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    first_entry DATETIME,
+    last_entry DATETIME
+)ENIGNE = InnoDB;
 
-DROP TABLE IF EXISTS tickets;
-CREATE TABLE IF NOT EXISTS tickets(
-    id INT NOT NULL AUTO_INCREMENT,
-    errorName varchar(50),
-    description varchar(512),
-    PRIMARY KEY (id)
-);
+DROP TABLE IF EXISTS entries;
+CREATE TABLE IF NOT EXISTS entries(
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
+    esp_id INT UNSIGNED NOT NULL,
+    altitude FLOAT,
+    pressure FLOAT,
+    temperature FLOAT,
+    humidity FLOAT,
+    recorded_at DATETIME,
+    CONSTRAINT 'fk_esp_id'
+        FOREIGN KEY (esp_id) REFERENCES devices (id)
+        ON DELETE CASCADE
+        ON UPDATE RESTRICT
+)ENIGNE = InnoDB;
