@@ -92,21 +92,7 @@ function insert_entry(conn, jsonObj)
     });
 }
 
-async function getData(callback)
-{
-    let conn;
-    conn = await pool.getConnection();
-    conn.query("SELECT * FROM entries;", (error, results) => {
-        if (error)
-        {
-            //return callback(error, null);
-            console.log("Error getting data from DB");
-        }
-        //callback(null, results);
-        console.log("Great success");
-        return ("Great success");
-    });
-}
+
 
 //MQTT
 const mqtt = require('mqtt');
@@ -180,8 +166,24 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-    res.json(getData());
+    getData(req, res);
 });
+
+async function getData(req, res)
+{
+    let conn;
+    conn = await pool.getConnection();
+    conn.query("SELECT * FROM entries;", (error, results) => {
+        if (error)
+        {
+            //return callback(error, null);
+            console.log("Error getting data from DB");
+        }
+        //callback(null, results);
+        console.log("Great success");
+        res.json("Great success");
+    });
+}
 
 function get_index(req, res) {
     res.render("pages/index", {
