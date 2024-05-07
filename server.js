@@ -187,7 +187,7 @@ app.get("/data", (req, res) => {
         res.send(data);
     });
     */
-   res.send("gday");
+   res.json("gday");
 });
 
 function get_index(req, res) {
