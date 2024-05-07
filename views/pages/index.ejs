@@ -29,7 +29,9 @@
                 fetch("/data")
                 .then(response=>response.json());
 
-                console.log(response);
+                let data = fetch("/data");
+
+                console.log(data);
                 console.log("helo");
             }
         </script>
