@@ -24,7 +24,8 @@ async function asyncFunction(message) {
         //console.log(string);
         //const res = await conn.query(string);
 	    console.log(res);
-        //const entry = await conn.query("INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at) VALUES (?, ?, ?, ?, ?, ?);", [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.humidity, timestamp]);
+        const entry = await conn.query("INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at) VALUES (?, ?, ?, ?, ?, ?);", [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.humidity, timestamp]);
+        console.log(entry);
     } catch(err) {
         console.log("Error: " + err);
         throw err;
