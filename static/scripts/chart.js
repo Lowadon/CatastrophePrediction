@@ -1,6 +1,10 @@
+$( document ).ready(function() {
+  console.log( "ready!" );
+  const intervalID = setInterval(graph, 5000);
+});
+
 async function graph() 
-  {
-    console.log("test");
+{
     const response = await fetch("/data");
     //console.log(response.json());
   
@@ -188,5 +192,5 @@ async function graph()
       },
     });
   }
-
-graph();
+  
+  graph();
