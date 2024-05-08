@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
         <!-- JS Files -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="/scripts/indexScript.js"></script>
@@ -21,12 +21,24 @@
 
     
 
-    <body onload = graph()>
+    <body>
         <h1>Helo</h1>
         <!-- <div style="width: 500px;"><canvas id="dimensions"></canvas></div><br/> -->
         <div class="center-container">
             <div class="canvas-container">
-                <canvas id="acquisitions"></canvas>
+                <canvas id="altitude"></canvas>
+            </div>    
+    
+            <div class="canvas-container">
+                <canvas id="temperature"></canvas>
+            </div>    
+  
+            <div class="canvas-container">
+                <canvas id="humidity"></canvas>
+            </div>    
+
+            <div class="canvas-container">
+                <canvas id="pressure"></canvas>
             </div>    
         </div>
 
