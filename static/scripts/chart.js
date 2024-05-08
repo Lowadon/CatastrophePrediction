@@ -45,10 +45,10 @@ async function graph()
 
   for(const row in jsonData)
   {
-    const tableRow = document.createElement('tr');
+    const tableRow = document.createElement("TR");
     for(const item in row)
     {
-      const tableItem = document.createElement('td');
+      const tableItem = document.createElement("TD");
       tableItem.innerHTML = item;
       tableRow.appendChild(tableItem);
     }
