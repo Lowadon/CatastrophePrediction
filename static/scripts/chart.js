@@ -5,18 +5,13 @@ async function graph(data) {
   
     const jsonData = await response.json();
   
-    const promiseData = jsonData;
-  
-    console.log(promiseData);
-    const temperatures = promiseData.map(
-      (measurement) => measurement.temperature
-    );
-    const humidities = promiseData.map((measurement) => measurement.humidity);
-    const altitudes = promiseData.map((measurement) => measurement.altitude);
-    const pressures = promiseData.map((measurement) => measurement.pressure);
-    const timestamps = promiseData.map(
-      (measurement) => new Date(measurement.timestamp)
-    );
+    console.log(jsonData);
+	
+    const temperatures 	= jsonData.map((entries) => entries.temperature);
+    const humidities 	= jsonData.map((entries) => entries.humidity);
+    const altitudes 	= jsonData.map((entries) => entries.altitude);
+    const pressures 	= jsonData.map((entries) => entries.pressure);
+    const timestamps 	= jsonData.map((entries) => new Date(entries.recorded_at));
   
     const formattedTimestamps = [];
   
