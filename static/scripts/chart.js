@@ -1,3 +1,5 @@
+const { each } = require("jquery");
+
 $( document ).ready(function() {
   console.log( "ready!" );
   const intervalID = setInterval(graph, 5000);
@@ -33,6 +35,27 @@ async function graph()
     //console.log(element);
     formattedTimestamps.push(element);
   });
+
+  for(let item of jsonData[0])
+  {
+    const tableItem = document.createElement('td');
+    let keyVal = Object.keys(item)[0];
+    tableItem.id = keyVal;
+    tableItem.innerHTML = keyVal;
+    document.getElementById("dataTableHeadRow").appendChild(tableItem);
+  }
+
+  for(let row of jsonData)
+  {
+    const tableRow = document.createElement('tr');
+    for(let item of row)
+    {
+      const tableItem = document.createElement('td');
+      tableItem.innerHTML = item;
+      tablleRow.appendChild(tableItem);
+    }
+    document.getElementById("dataTableBody").appendChild(tr);
+  }
 
   //console.log(formattedTimestamps);
 
