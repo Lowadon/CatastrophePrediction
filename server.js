@@ -117,12 +117,30 @@ mqtt_client.on('message', (topic, message) => {
     console.log('success');
 });
 
-//VARIABLES
-//const dbHost = "localhost";
-//const dbUser = "skyryll";
-//const dbPass = "SkyDbAccess";
-//const dbDatabase = "systeminfo";
 const nodeAppPort = 8080;
+
+async function readData(req, res) {
+    let conn;
+    try {
+      conn = await pool.getConnection();
+      data = await conn.query("SELECT * FROM (SELECT * FROM entries ORDER BY timestamp DESC LIMIT 50) ORDER BY id ASC;");
+      res.json(data);
+    } catch (err) {
+      throw err;
+    } finally {
+      if (conn) conn.end();
+    }
+}
+
+BigInt.prototype['toJSON'] = function () { 
+return this.toString()
+}
+
+function get_index(req, res) {
+    res.render("pages/index", {
+        loggedin: req.session.loggedin,
+    });
+}
 
 // expose static path
 app.use(express.static("static"));
@@ -147,20 +165,6 @@ app.listen(nodeAppPort, () => {
     console.log("http://localhost:" + nodeAppPort + "/");
 });
 
-//connect to local database
-//const connection = mysql.createConnection({
-//    host: dbHost,
-//    user: dbUser,
-//    password: dbPass,
-//    database: dbDatabase,
-//});
-
-// connection test
-//connection.connect(function (error) {
-//    if (error) throw error;
-//    else console.log("connection to database successful");
-//});
-
 // route pages
 app.get("/", (req, res) => {
     get_index(req, res);
@@ -170,37 +174,3 @@ app.get("/data", (req, res) => {
    readData(req, res);
 });
 
-async function readData(req, res) {
-    let conn;
-    try {
-      conn = await pool.getConnection();
-      data = await conn.query("SELECT * FROM entries");
-      res.json(data);
-  
-    } catch (err) {
-      throw err;
-
-    } finally {
-      if (conn) conn.end();
-    }
-  }
-
-  BigInt.prototype['toJSON'] = function () { 
-    return this.toString()
-  }
-
-function get_index(req, res) {
-    res.render("pages/index", {
-        loggedin: req.session.loggedin,
-    });
-}
-
-//app.get("/ticketform", (req, res) => {
-//    get_ticketform(req, res);
-//});
-//
-//function get_ticketform(req, res) {
-//    res.render("pages/ticketform", {
-//        loggedin: req.session.loggedin,
-//    });
-//}
