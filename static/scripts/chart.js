@@ -50,6 +50,7 @@ async function graph()
         ],
       },
       options: {
+        animation : false,
         scales: {
           x: [
             {
