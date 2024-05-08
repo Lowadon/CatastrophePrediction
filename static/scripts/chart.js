@@ -1,4 +1,5 @@
-async function graph() {
+async function graph() 
+{
     console.log("test");
     const response = await fetch("/data");
     //console.log(response.json());
@@ -108,3 +109,5 @@ async function graph() {
       },
     });
   }
+  
+  graph();
