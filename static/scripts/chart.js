@@ -50,7 +50,7 @@ async function graph()
     {
       const tableItem = document.createElement('td');
       tableItem.innerHTML = item;
-      tablleRow.appendChild(tableItem);
+      tableRow.appendChild(tableItem);
     }
     document.getElementById("dataTableBody").appendChild(tr);
   }
