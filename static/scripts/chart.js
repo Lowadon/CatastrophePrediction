@@ -1,5 +1,5 @@
 async function graph() 
-{
+  {
     console.log("test");
     const response = await fetch("/data");
     //console.log(response.json());
@@ -109,84 +109,84 @@ async function graph()
         },
       },
     });
-  }
-  
-  new Chart(document.getElementById("altitude"), {
-    type: "line",
-    data: {
-      labels: formattedTimestamps,
-      datasets: [
-          {
-            label: "Altitude",
-            data: altitudes,
-            borderWidth: 1,
-            backgroundColor: "#abcdef",
-          }
-      ],
-    },
-    options: {
-      scales: {
-        x: [
-          {
-            type: "time",
-            time: {
-              unit: "hour",
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Time",
-            },
-          },
-        ],
-        y: [
-          {
-            scaleLabel: {
-              display: false,
-              labelString: "Altitude (m)",
-            },
-          }
-        ],
-      },
-    },
-  });
-
-  new Chart(document.getElementById("pressure"), {
-    type: "line",
-    data: {
-      labels: formattedTimestamps,
-      datasets: [
-        {
-          label: "Pressure",
-          data: pressures,
-          borderWidth: 1,
-          backgroundColor: "#4520d2",
-        },
-      ],
-    },
-    options: {
-      scales: {
-        x: [
-          {
-            type: "time",
-            time: {
-              unit: "hour",
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Time",
-            },
-          },
-        ],
-        y: [
-          {
-            scaleLabel: {
-              display: false,
-              labelString: "Pressure (hPa)",
+      
+    new Chart(document.getElementById("altitude"), {
+      type: "line",
+      data: {
+        labels: formattedTimestamps,
+        datasets: [
+            {
+              label: "Altitude",
+              data: altitudes,
+              borderWidth: 1,
+              backgroundColor: "#abcdef",
             }
+        ],
+      },
+      options: {
+        scales: {
+          x: [
+            {
+              type: "time",
+              time: {
+                unit: "hour",
+              },
+              scaleLabel: {
+                display: true,
+                labelString: "Time",
+              },
+            },
+          ],
+          y: [
+            {
+              scaleLabel: {
+                display: false,
+                labelString: "Altitude (m)",
+              },
+            }
+          ],
+        },
+      },
+    });
+
+    new Chart(document.getElementById("pressure"), {
+      type: "line",
+      data: {
+        labels: formattedTimestamps,
+        datasets: [
+          {
+            label: "Pressure",
+            data: pressures,
+            borderWidth: 1,
+            backgroundColor: "#4520d2",
           },
         ],
       },
-    },
-  });
+      options: {
+        scales: {
+          x: [
+            {
+              type: "time",
+              time: {
+                unit: "hour",
+              },
+              scaleLabel: {
+                display: true,
+                labelString: "Time",
+              },
+            },
+          ],
+          y: [
+            {
+              scaleLabel: {
+                display: false,
+                labelString: "Pressure (hPa)",
+              }
+            },
+          ],
+        },
+      },
+    });
+  }
 
-  graph();
+graph();
