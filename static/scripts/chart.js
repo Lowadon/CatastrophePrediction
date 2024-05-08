@@ -43,10 +43,10 @@ async function graph()
     document.getElementById("dataTableHeadRow").appendChild(tableItem);
   }*/
 
-  for(let row of jsonData)
+  for(const row in jsonData)
   {
     const tableRow = document.createElement('tr');
-    for(let item of row)
+    for(const item in row)
     {
       const tableItem = document.createElement('td');
       tableItem.innerHTML = item;
