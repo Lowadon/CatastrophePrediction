@@ -90,6 +90,7 @@ async function graph()
         ],
       },
       options: {
+        animation : false,
         scales: {
           x: [
             {
@@ -129,6 +130,7 @@ async function graph()
         ],
       },
       options: {
+        animation : false,
         scales: {
           x: [
             {
@@ -168,6 +170,7 @@ async function graph()
         ],
       },
       options: {
+        animation : false,
         scales: {
           x: [
             {
