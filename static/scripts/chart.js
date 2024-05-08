@@ -1,5 +1,3 @@
-const { each } = require("jquery");
-
 $( document ).ready(function() {
   console.log( "ready!" );
   const intervalID = setInterval(graph, 5000);
