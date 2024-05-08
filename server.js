@@ -123,7 +123,7 @@ async function readData(req, res) {
     let conn;
     try {
       conn = await pool.getConnection();
-      data = await conn.query("SELECT * FROM (SELECT * FROM entries ORDER BY timestamp DESC LIMIT 50) ORDER BY id ASC;");
+      data = await conn.query("SELECT * FROM (SELECT * FROM entries ORDER BY recorded_at DESC LIMIT 50) AS subquery ORDER BY id ASC;");
       res.json(data);
     } catch (err) {
       throw err;
