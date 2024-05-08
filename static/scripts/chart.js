@@ -34,14 +34,14 @@ async function graph()
     formattedTimestamps.push(element);
   });
 
-  for(let item of jsonData[0])
+  /*for(let item of jsonData[0])
   {
     const tableItem = document.createElement('td');
     let keyVal = Object.keys(item)[0];
     tableItem.id = keyVal;
     tableItem.innerHTML = keyVal;
     document.getElementById("dataTableHeadRow").appendChild(tableItem);
-  }
+  }*/
 
   for(let row of jsonData)
   {
