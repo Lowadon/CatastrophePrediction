@@ -1,0 +1,18 @@
+
+\begin{thenomenclature} 
+\nomgroup{A}
+  \item [{BMP}]\begingroup Barometric Pressure Sensor\nomeqref {4.0}\nompageref{35}
+  \item [{CSS}]\begingroup Cascading Style Sheet\nomeqref {4.0}\nompageref{35}
+  \item [{DHT}]\begingroup Digital Temperature and Humidity Sensor\nomeqref {4.0}\nompageref{35}
+  \item [{EJS}]\begingroup Embedded Javascript Templating\nomeqref {4.0}\nompageref{35}
+  \item [{ESP}]\begingroup Espressif ESP8266\nomeqref {4.0}\nompageref{35}
+  \item [{HTML}]\begingroup Hyper Text Markup Language\nomeqref {4.0}\nompageref{35}
+  \item [{JSON}]\begingroup JavaScript Object Notation\nomeqref {4.0}\nompageref{35}
+  \item [{MQTT}]\begingroup Message Queuing Telemetry Transport\nomeqref {4.0}\nompageref{35}
+  \item [{N.N.}]\begingroup Normal Null\nomeqref {4.0}\nompageref{35}
+  \item [{NTP}]\begingroup Network Time Protocol\nomeqref {4.0}\nompageref{35}
+  \item [{SSID}]\begingroup Service Set Identifier\nomeqref {4.0}\nompageref{35}
+  \item [{URL}]\begingroup Uniform Resource Locator\nomeqref {4.0}\nompageref{35}
+  \item [{UTC}]\begingroup Coordinated Universal Time\nomeqref {4.0}\nompageref{35}
+
+\end{thenomenclature}
