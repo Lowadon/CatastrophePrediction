@@ -1,16 +1,22 @@
 Weil MicroPython auf dem ESP in Kombination mit einem MQTT-Broker schon 
 zuvor im Unterricht Probleme bereitet hat, haben wir uns dazu entschieden, den ESP mit C++ zu programmieren.
 
+Für das Handling der Sensordaten und des Timestamps, welcher später übermittelt werden soll, wurde eine separate Klasse "`sensorData"' angelegt.
+Über den Konstruktor können die Werte an eine Klasseninstanz übergeben werden. 
+Werden diese dann zum Übermitteln an den Broker benötigt, können die Werte dann einfach per Pfeiloperator ("`->"') abgefragt werden.
+
 Für sowohl den DHT als auch den BMP wurde die "`Adafruit\_Sensor"'-Bibliothek verwendet.
-Diese wird mit \textit{#include Adafruit\_Sensor.h} eingebunden.
+Diese wird mit \textit{\#include Adafruit\_Sensor.h} eingebunden.
 
 \subsubsection{Auslesen DHT}
-	Beim DHT war es noch zusätzlich notwendig, die "`DHT"'-Bibliothek mit \textit{#include <DHT.h>} einzubinden.
+	Beim DHT war es noch zusätzlich notwendig, die "`DHT"'-Bibliothek mit \textit{\#include <DHT.h>} einzubinden.
 	Wenn die Bibliothek eingebunden ist, kann eine Instanz vom Typ "`DHT"' und der Bezeichnung "`dht"' mit der Zeile \textit{DHT dht(02,DHT22);} erzeugt werden.
 	Die "`02"' beschreibt den Pin, auf welchen der DHT die Daten sendet und das "`DHT22"' beschreibt den genauen Typ des DHT.
 	
-	In der Funktion \textit{void setup()} wird 
-
+	In der Funktion \textit{void setup()} wird mit der Zeile \textit{dht.begin();} das Auslesen des Pins gestartet. 
+	Jetzt kann in der Funktion \textit{void loop()} mit \textit{dht.readTemperature()} die aktuelle Temperatur und mit \textit{dht.readHumidity()}
+	die aktuelle Luftfeuchtigkeit ausgelesen werden.
+	
 \subsubsection{Auslesen BMP}
 
 \subsubsection{Erzeugung Timestamp}
