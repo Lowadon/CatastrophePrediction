@@ -1,7 +1,7 @@
 \begin{enumerate}
 	\item Mobiles ESP8622 \newline
-	Als Station für die Aufzeichnung der Daten soll ein Microcontroller verwendet werden. Vorgabe der Stadt Tettnang war ein ESP 8266, welches über eine mobile Stromversorgung betrieben werden soll. 
-	Als Sensoren für das Aufzeichnen der Daten sollen ein DHT22 und ein BMP 180 verwendet werden.
+	Als Station für die Aufzeichnung der Daten soll ein Mikrocontroller verwendet werden. Vorgabe der Stadt Tettnang war das ESP8266, welches über eine mobile Stromversorgung betrieben werden soll. 
+	Als Sensoren für das Aufzeichnen der Daten sollen ein DHT22 und ein BMP180 verwendet werden.
 	
 	\item DHT22 \newline
 	Der DHT22 Sensor wird für die Aufzeichnung von Luftfeuchtigkeit und Temperatur verwendet.
@@ -16,7 +16,7 @@
 	Für das Bereitstellen von Visualisierungen der Daten und Aufzeichnung der Daten in einem Datenbank System wird ein Webserver als Interface benötigt. Dafür wird in diesem Projekt NodeJS verwendet.
 	
 	\item Frontend \newline
-	Für die Darstellung der Daten soll eine Website zur Verfügung bereitgestellt werden. Diese soll vorerst eine einzelne Seite sein, die nur eine Tabelle die die Höhe über Normal Null auf einer Horizontalen Zeitachse darstellt.
+	Für die Darstellung der Daten soll eine Website zur Verfügung gestellt werden. Diese soll vorerst eine einzelne Seite sein, die nur eine Tabelle die die Höhe über Normal Null auf einer Horizontalen Zeitachse darstellt.
 	
 	\item Backend \newline
 	Das Backend soll das Topic im MQTT-Broker abonnieren, und dann alle Updates in die Datenbank speichern. Außerdem soll das Backend die Daten aus der Datenbank auslesen und für die Frontendimplementierung bereitstellen.
