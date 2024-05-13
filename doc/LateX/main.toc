@@ -10,32 +10,23 @@
 \contentsline {subsection}{\numberline {1.2.3}Sachmittelplanung}{6}{subsection.1.2.3}%
 \contentsline {subsection}{\numberline {1.2.4}Kostenplanung}{7}{subsection.1.2.4}%
 \contentsline {subsection}{\numberline {1.2.5}Qualitätsplanung}{8}{subsection.1.2.5}%
-\contentsline {chapter}{\numberline {2}Soft- und Netzwerktechnik}{9}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Softwaretechnik (Kundenwebsite)}{9}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Technologiestack}{9}{subsection.2.1.1}%
-\contentsline {subsubsection}{\nonumberline Nodejs}{9}{subsubsection*.10}%
-\contentsline {subsubsection}{\nonumberline MySQL}{10}{subsubsection*.12}%
-\contentsline {subsubsection}{\nonumberline HTML - Hyper Text Markup Language}{10}{subsubsection*.14}%
-\contentsline {subsubsection}{\nonumberline CSS - Cascading Syle Sheet}{11}{subsubsection*.16}%
-\contentsline {subsubsection}{\nonumberline Javascript}{11}{subsubsection*.18}%
-\contentsline {subsubsection}{\nonumberline EJS - Embedded Javascript Templating}{11}{subsubsection*.20}%
-\contentsline {subsubsection}{\nonumberline Bootstrap}{11}{subsubsection*.22}%
-\contentsline {subsection}{\numberline {2.1.2}Qualitätsmanagement}{12}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Installation}{12}{subsection.2.1.3}%
-\contentsline {subsubsection}{\nonumberline MySQL}{12}{subsubsection*.24}%
-\contentsline {subsubsection}{\nonumberline Nodejs}{13}{subsubsection*.26}%
-\contentsline {subsubsection}{\nonumberline Website Relevante Daten}{13}{subsubsection*.28}%
-\contentsline {subsection}{\numberline {2.1.4}Website}{14}{subsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.1.5}Datenbank}{15}{subsection.2.1.5}%
-\contentsline {section}{\numberline {2.2}Netzwerkkonfiguration}{15}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Praktische Hardwarekonfiguration}{16}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Theoretische Hardwarekonfiguration}{16}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Gerätekonfiguration}{19}{subsection.2.2.3}%
-\contentsline {subsubsection}{\nonumberline Router-Konfiguration}{19}{subsubsection*.34}%
-\contentsline {subsubsection}{\nonumberline Switch-Konfiguration}{20}{subsubsection*.37}%
-\contentsline {subsubsection}{\nonumberline AP-Konfiguration}{20}{subsubsection*.39}%
-\contentsline {subsubsection}{\nonumberline Theoretische Gerätekonfiguration}{20}{subsubsection*.41}%
-\contentsline {chapter}{\numberline {3}Ausblick}{21}{chapter.3}%
-\contentsline {chapter}{\nonumberline Literatur}{23}{chapter*.43}%
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{25}{chapter*.44}%
+\contentsline {chapter}{\numberline {2}Durchführung- und Auftragsbearbeitung}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}ESP8266}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Anschließen der Sensorik}{9}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Sensordaten auslesen}{9}{subsection.2.1.2}%
+\contentsline {subsubsection}{\nonumberline Auslesen DHT}{11}{subsubsection*.10}%
+\contentsline {subsubsection}{\nonumberline Auslesen BMP}{11}{subsubsection*.12}%
+\contentsline {subsubsection}{\nonumberline Erzeugung Timestamp}{11}{subsubsection*.14}%
+\contentsline {subsection}{\numberline {2.1.3}WLAN Verbindung}{11}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Verbinden zu und publishen auf MQTT Broker}{11}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Raspberry Pi}{11}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Installation benötigter Software}{11}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Einrichtung der Datenbank}{11}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Programmierung des NodeJS-Servers}{11}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Programierung der Website zur Datenvisualisierung}{11}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {3}Projektergebnisse}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Projektergebnisse}{12}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Abnahme}{12}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Soll-Ist-Vergleich}{13}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Bewertung (Fazit, Ausblick)}{13}{subsection.3.1.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
