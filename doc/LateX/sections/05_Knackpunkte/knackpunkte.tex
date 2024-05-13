@@ -1,0 +1,9 @@
+Die Knackpunkte im Projekt sind vorwiegend durch kleinere, jedoch schwer zu lokalisierende Fehler entstanden. \newline
+
+Bei der Datenbank gab es initiale Schwierigkeiten mit dem Initialisierungsskript, welches das Setup und vorwiegend mehrfache Setups stark vereinfacht und beschleunigt.
+Letztendlich ließen sich hier die Schwierigkeiten auf inkorrekte Syntax zurückführen, welche jedoch teilweise sehr schwer zu lokalisieren war. \newline
+Auch bei der Schnittstelle zwischen der Datenbank und dem NodeJS-Backend gab es aufgrund von Syntaxfehlern mittlere Verzögerungen.
+Letztendlich waren wir jedoch in der Lage, alle Fehler zu beheben. \newline
+Beim ESP gab es ebenfalls kleinere Startschwierigkeiten, die Verbindung zum Broker konnte anfangs nicht hergestellt werden, was dann jedoch auf einen inkorrekten Port und eine fehlerhafte Klasseninstanziierung zurückzuführen war.
+Da der ESP keine interne Zeit hat und seine Zeit immer von einem NTP-Server bezieht gab es auch hier kleinere Umstände.
+Da der Hotspot eines Smartphones keinen NTP-Server direkt bereitstellt, musste das Auslesen der Zeit umprogrammiert werden, sodass nicht nur leere Timestamps zurückgeliefert wurden.

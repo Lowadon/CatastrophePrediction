@@ -14,8 +14,10 @@ DIV=12,							% Satzspiegeleinstellung, 12 ist Standar bei KOMA
 cleardoublepage=empty,			% Stil einer leeren eingefügten Seite bei Kapitelwechsel
 parskip,							% Absatzabstand bei Absatzwechsel einfügen
 ngerman
-]{report}
+]{scrbook}
 \usepackage{times}				% Times New Roman like font
+\renewcommand*\sectfont{\normalcolor\bfseries}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{0\baselineskip}}
 \usepackage{scrhack}			
 \usepackage[utf8]{inputenc} 	% ermöglicht die direkte Eingabe von Umlauten
 \usepackage[T1]{fontenc} 		% Ausgabe aller zeichen in einer T1-Codierung (wichtig für die Ausgabe von Umlauten!)
@@ -149,16 +151,16 @@ marginal
 
 % Hier die persönlichen Daten eingeben:
 
-\newcommand{\titel}{Projektdokumentation Optikerkette SchönesGlas}
+\newcommand{\titel}{Projektdokumentation Katastrophenprävention}
 %\newcommand{\untertitel}{ggf. Untertitel mit ergänzenden Hinweisen}
 \newcommand{\arbeit}{Projektarbeit}
 \newcommand{\studiengang}{Fachinformatik}
 \newcommand{\studienrichtung}{Anwendungsentwicklung}
 \newcommand{\autor}{Malte Blumenthal, Benjamin Schick}
 \newcommand{\kurs}{EFI222}
-\newcommand{\abgabe}{24.04.2023}
+\newcommand{\abgabe}{13.05.2024}
 %\newcommand{\betreuerdhbw}{Gutachter der DHBW}
-\newcommand{\jahr}{2023}			% für Angabe im Copyright-Vermerk der Titelseite
+\newcommand{\jahr}{2024}			% für Angabe im Copyright-Vermerk der Titelseite
 
 % Folgende Zeilen definieren Abkürzungen, um Befehle schneller eingeben zu können
 \newcommand{\ua}{\mbox{u.\,a.\ }}
@@ -180,7 +182,7 @@ marginal
 	
 	\include{pages/titelseite} 				
 	\pagenumbering{roman}	
-	\setcounter{tocdepth}{0}				 
+	\setcounter{tocdepth}{2}				 
 	\tableofcontents
 	\cleardoublepage
 	\pagenumbering{arabic}
@@ -197,12 +199,14 @@ marginal
 	\nocite{*}	
 	%\printbibliography	
 		
-	\setcounter{tocdepth}{1}
+	\setcounter{tocdepth}{2}
 	\listoffigures
 	\listoftables
 	\lstlistoflistings
 	
 	\input{pages/abkuerzungen}
+	\printnomenclature
+	%
 	
 	\include{pages/erklaerung}
 	

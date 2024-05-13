@@ -1,0 +1,370 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{diagram.io}{online}{}
+      \name{author}{1}{}{%
+        {{hash=7495d8e7ae94dc4b5cac0d2e2414b731}{%
+           family={Blumenthal},
+           familyi={B\bibinitperiod},
+           given={Malte},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7495d8e7ae94dc4b5cac0d2e2414b731}
+      \strng{fullhash}{7495d8e7ae94dc4b5cac0d2e2414b731}
+      \strng{bibnamehash}{7495d8e7ae94dc4b5cac0d2e2414b731}
+      \strng{authorbibnamehash}{7495d8e7ae94dc4b5cac0d2e2414b731}
+      \strng{authornamehash}{7495d8e7ae94dc4b5cac0d2e2414b731}
+      \strng{authorfullhash}{7495d8e7ae94dc4b5cac0d2e2414b731}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 18.04.2023, 14:56)}
+      \field{title}{Diagramm erstellt mit}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://dbdiagram.io
+      \endverb
+      \verb{url}
+      \verb https://dbdiagram.io
+      \endverb
+    \endentry
+    \entry{Cherry}{online}{}
+      \name{author}{1}{}{%
+        {{hash=7b75d91d2856e9e74fe7cfbb857dcf2f}{%
+           family={Cherry},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b75d91d2856e9e74fe7cfbb857dcf2f}
+      \strng{fullhash}{7b75d91d2856e9e74fe7cfbb857dcf2f}
+      \strng{bibnamehash}{7b75d91d2856e9e74fe7cfbb857dcf2f}
+      \strng{authorbibnamehash}{7b75d91d2856e9e74fe7cfbb857dcf2f}
+      \strng{authornamehash}{7b75d91d2856e9e74fe7cfbb857dcf2f}
+      \strng{authorfullhash}{7b75d91d2856e9e74fe7cfbb857dcf2f}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 24.03.2023, 13:28)}
+      \field{title}{Cherry Desktop Sets}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.cherry.de/desktop-sets
+      \endverb
+      \verb{url}
+      \verb https://www.cherry.de/desktop-sets
+      \endverb
+    \endentry
+    \entry{PacketTracer}{online}{}
+      \name{author}{1}{}{%
+        {{hash=dfeaf10390e560aea745ccba53e044ed}{%
+           family={cisco},
+           familyi={c\bibinitperiod}}}%
+      }
+      \strng{namehash}{dfeaf10390e560aea745ccba53e044ed}
+      \strng{fullhash}{dfeaf10390e560aea745ccba53e044ed}
+      \strng{bibnamehash}{dfeaf10390e560aea745ccba53e044ed}
+      \strng{authorbibnamehash}{dfeaf10390e560aea745ccba53e044ed}
+      \strng{authornamehash}{dfeaf10390e560aea745ccba53e044ed}
+      \strng{authorfullhash}{dfeaf10390e560aea745ccba53e044ed}
+      \field{sortinit}{c}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 24.03.2023, 08:34)}
+      \field{title}{Cisco Packet Tracer}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.netacad.com/courses/packet-tracer
+      \endverb
+      \verb{url}
+      \verb https://www.netacad.com/courses/packet-tracer
+      \endverb
+    \endentry
+    \entry{MySQLinstall}{online}{}
+      \name{author}{1}{}{%
+        {{hash=c2543f6c9141c9b9ae90596693a0bf7c}{%
+           family={digitalocean},
+           familyi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{fullhash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{bibnamehash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{authorbibnamehash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{authornamehash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{authorfullhash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \field{extraname}{1}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 22.04.2023, 09:59)}
+      \field{title}{Install MySQL}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
+      \endverb
+      \verb{url}
+      \verb https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
+      \endverb
+    \endentry
+    \entry{Nodejsinstall}{online}{}
+      \name{author}{1}{}{%
+        {{hash=c2543f6c9141c9b9ae90596693a0bf7c}{%
+           family={digitalocean},
+           familyi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{fullhash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{bibnamehash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{authorbibnamehash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{authornamehash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \strng{authorfullhash}{c2543f6c9141c9b9ae90596693a0bf7c}
+      \field{extraname}{2}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 22.04.2023, 10:12)}
+      \field{title}{Install Nodejs}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
+      \endverb
+      \verb{url}
+      \verb https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
+      \endverb
+    \endentry
+    \entry{Lenovo}{online}{}
+      \name{author}{1}{}{%
+        {{hash=57040fe2fe7a0a1e9ab043ae1f5d9845}{%
+           family={Lenovo},
+           familyi={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{57040fe2fe7a0a1e9ab043ae1f5d9845}
+      \strng{fullhash}{57040fe2fe7a0a1e9ab043ae1f5d9845}
+      \strng{bibnamehash}{57040fe2fe7a0a1e9ab043ae1f5d9845}
+      \strng{authorbibnamehash}{57040fe2fe7a0a1e9ab043ae1f5d9845}
+      \strng{authornamehash}{57040fe2fe7a0a1e9ab043ae1f5d9845}
+      \strng{authorfullhash}{57040fe2fe7a0a1e9ab043ae1f5d9845}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 24.03.2023, 12:56)}
+      \field{title}{Lenovo}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.lenovo.com/de/de/
+      \endverb
+      \verb{url}
+      \verb https://www.lenovo.com/de/de/
+      \endverb
+    \endentry
+    \entry{LG}{online}{}
+      \name{author}{1}{}{%
+        {{hash=3138b8e6061fdf7cfaaa79279175cbcd}{%
+           family={LG},
+           familyi={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{3138b8e6061fdf7cfaaa79279175cbcd}
+      \strng{fullhash}{3138b8e6061fdf7cfaaa79279175cbcd}
+      \strng{bibnamehash}{3138b8e6061fdf7cfaaa79279175cbcd}
+      \strng{authorbibnamehash}{3138b8e6061fdf7cfaaa79279175cbcd}
+      \strng{authornamehash}{3138b8e6061fdf7cfaaa79279175cbcd}
+      \strng{authorfullhash}{3138b8e6061fdf7cfaaa79279175cbcd}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 24.03.2023, 13:10)}
+      \field{title}{LG Monitor}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.lg.com/de/monitore
+      \endverb
+      \verb{url}
+      \verb https://www.lg.com/de/monitore
+      \endverb
+    \endentry
+    \entry{Notepad++}{online}{}
+      \name{author}{1}{}{%
+        {{hash=376f6d6869aaf313a5ab63d4cefdbeaa}{%
+           family={Notepad++},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{376f6d6869aaf313a5ab63d4cefdbeaa}
+      \strng{fullhash}{376f6d6869aaf313a5ab63d4cefdbeaa}
+      \strng{bibnamehash}{376f6d6869aaf313a5ab63d4cefdbeaa}
+      \strng{authorbibnamehash}{376f6d6869aaf313a5ab63d4cefdbeaa}
+      \strng{authornamehash}{376f6d6869aaf313a5ab63d4cefdbeaa}
+      \strng{authorfullhash}{376f6d6869aaf313a5ab63d4cefdbeaa}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 24.03.2023, 08:17)}
+      \field{title}{Notepad++}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://notepad-plus-plus.org
+      \endverb
+      \verb{url}
+      \verb https://notepad-plus-plus.org
+      \endverb
+    \endentry
+    \entry{mysql}{online}{}
+      \name{author}{1}{}{%
+        {{hash=ca2083cb55ef71f99892fe7ea062b47b}{%
+           family={stackshare},
+           familyi={s\bibinitperiod}}}%
+      }
+      \strng{namehash}{ca2083cb55ef71f99892fe7ea062b47b}
+      \strng{fullhash}{ca2083cb55ef71f99892fe7ea062b47b}
+      \strng{bibnamehash}{ca2083cb55ef71f99892fe7ea062b47b}
+      \strng{authorbibnamehash}{ca2083cb55ef71f99892fe7ea062b47b}
+      \strng{authornamehash}{ca2083cb55ef71f99892fe7ea062b47b}
+      \strng{authorfullhash}{ca2083cb55ef71f99892fe7ea062b47b}
+      \field{sortinit}{s}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 18.04.2023, 12:17)}
+      \field{title}{MySQL}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://stackshare.io/mysql
+      \endverb
+      \verb{url}
+      \verb https://stackshare.io/mysql
+      \endverb
+    \endentry
+    \entry{nodejs}{online}{}
+      \name{author}{1}{}{%
+        {{hash=3a81b4227cff025aa3a198377f3a849b}{%
+           family={trio},
+           familyi={t\bibinitperiod}}}%
+      }
+      \strng{namehash}{3a81b4227cff025aa3a198377f3a849b}
+      \strng{fullhash}{3a81b4227cff025aa3a198377f3a849b}
+      \strng{bibnamehash}{3a81b4227cff025aa3a198377f3a849b}
+      \strng{authorbibnamehash}{3a81b4227cff025aa3a198377f3a849b}
+      \strng{authornamehash}{3a81b4227cff025aa3a198377f3a849b}
+      \strng{authorfullhash}{3a81b4227cff025aa3a198377f3a849b}
+      \field{sortinit}{t}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 18.04.2023, 10:27)}
+      \field{title}{Nodejs}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.trio.dev/blog/companies-use-node-js
+      \endverb
+      \verb{url}
+      \verb https://www.trio.dev/blog/companies-use-node-js
+      \endverb
+    \endentry
+    \entry{JavaScript}{online}{}
+      \name{author}{1}{}{%
+        {{hash=12672e79b01e9ca7018105efb0ef871c}{%
+           family={wikipedia},
+           familyi={w\bibinitperiod}}}%
+      }
+      \strng{namehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{fullhash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{bibnamehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{authorbibnamehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{authornamehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{authorfullhash}{12672e79b01e9ca7018105efb0ef871c}
+      \field{extraname}{1}
+      \field{sortinit}{w}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 18.04.2023, 14:56)}
+      \field{title}{Javascript}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/JavaScript
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/JavaScript
+      \endverb
+    \endentry
+    \entry{mysqllogo}{online}{}
+      \name{author}{1}{}{%
+        {{hash=12672e79b01e9ca7018105efb0ef871c}{%
+           family={wikipedia},
+           familyi={w\bibinitperiod}}}%
+      }
+      \strng{namehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{fullhash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{bibnamehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{authorbibnamehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{authornamehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{authorfullhash}{12672e79b01e9ca7018105efb0ef871c}
+      \field{extraname}{2}
+      \field{sortinit}{w}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 18.04.2023, 09:21)}
+      \field{title}{MySQL Logo}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://de.wikipedia.org/wiki/Datei:MySQL_logo.svg
+      \endverb
+      \verb{url}
+      \verb https://de.wikipedia.org/wiki/Datei:MySQL_logo.svg
+      \endverb
+    \endentry
+    \entry{nodejslogo}{online}{}
+      \name{author}{1}{}{%
+        {{hash=12672e79b01e9ca7018105efb0ef871c}{%
+           family={wikipedia},
+           familyi={w\bibinitperiod}}}%
+      }
+      \strng{namehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{fullhash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{bibnamehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{authorbibnamehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{authornamehash}{12672e79b01e9ca7018105efb0ef871c}
+      \strng{authorfullhash}{12672e79b01e9ca7018105efb0ef871c}
+      \field{extraname}{3}
+      \field{sortinit}{w}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{(accessed: 18.04.2023, 08:51)}
+      \field{title}{Nodejs Logo}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://de.wikipedia.org/wiki/Datei:Node.js_logo.svg
+      \endverb
+      \verb{url}
+      \verb https://de.wikipedia.org/wiki/Datei:Node.js_logo.svg
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
