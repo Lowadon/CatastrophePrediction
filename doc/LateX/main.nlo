@@ -1,7 +1,7 @@
-\nomenclatureentry{aESP@[{ESP}]\begingroup Espressif ESP8266\nomeqref {3.0}|nompageref}{15}
-\nomenclatureentry{aMQTT@[{MQTT}]\begingroup Message Queuing Telemetry Transport\nomeqref {3.0}|nompageref}{15}
-\nomenclatureentry{aDHT@[{DHT}]\begingroup Digital Temperature and Humidity Sensor\nomeqref {3.0}|nompageref}{15}
-\nomenclatureentry{aBMP@[{BMP}]\begingroup Barometric Pressure Sensor\nomeqref {3.0}|nompageref}{15}
-\nomenclatureentry{aHTML@[{HTML}]\begingroup Hyper Text Markup Language\nomeqref {3.0}|nompageref}{15}
-\nomenclatureentry{aCSS@[{CSS}]\begingroup Cascading Style Sheet\nomeqref {3.0}|nompageref}{15}
-\nomenclatureentry{aEJS@[{EJS}]\begingroup Embedded Javascript Templating\nomeqref {3.0}|nompageref}{15}
+\nomenclatureentry{aESP@[{ESP}]\begingroup Espressif ESP8266\nomeqref {3.0}|nompageref}{14}
+\nomenclatureentry{aMQTT@[{MQTT}]\begingroup Message Queuing Telemetry Transport\nomeqref {3.0}|nompageref}{14}
+\nomenclatureentry{aDHT@[{DHT}]\begingroup Digital Temperature and Humidity Sensor\nomeqref {3.0}|nompageref}{14}
+\nomenclatureentry{aBMP@[{BMP}]\begingroup Barometric Pressure Sensor\nomeqref {3.0}|nompageref}{14}
+\nomenclatureentry{aHTML@[{HTML}]\begingroup Hyper Text Markup Language\nomeqref {3.0}|nompageref}{14}
+\nomenclatureentry{aCSS@[{CSS}]\begingroup Cascading Style Sheet\nomeqref {3.0}|nompageref}{14}
+\nomenclatureentry{aEJS@[{EJS}]\begingroup Embedded Javascript Templating\nomeqref {3.0}|nompageref}{14}
