@@ -1,1 +1,9 @@
 /node_modules
+
+#LateX ignores
+*.aux
+*.log
+*.lof
+*.synctex.gz
+*.toc
+*.pdf
