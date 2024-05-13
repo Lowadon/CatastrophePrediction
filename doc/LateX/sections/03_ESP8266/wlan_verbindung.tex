@@ -1,0 +1,5 @@
+Für die WLAN-Verbindung wurde die "`ESP8266WiFi"'-Bibliothek benötigt.
+Der Verbindungsvorgang wurde in eine separate Funktion ausgelagtert, welcher die SSID und das Passwort übergeben werden.\ref{lst:wificonnect}
+Diese Funktion wird immer initial in der \textit{void setup()}-Funktion aufgerufen, um die WLAN-Verbindung herzustellen.
+Ebenfalls wird bei jedem Durchlauf der \textit{void loop()}-Funktion mit \textit{if(WiFi.status() != WL\_CONNECTED)} überprüft, ob die WLAN-Verbindung noch besteht.
+Sollte dies nicht mehr der Fall sein, so wird die Funktion zur Verbindung mit dem WLAN erneut aufgerufen.

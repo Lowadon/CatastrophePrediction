@@ -1,0 +1,15 @@
+Um eine Verbindung zu einem (öffentlichen) MQTT-Broker herstellen zu können, wird zusätzlich zur bereits eingebundenen "`ESP8266WiFi"' auch die "`PubSubClient"'-Bibliothek benötigt.
+Allerdings ist es nötig, zuerst eine Instanz der Klasse "`WiFiClient"' mit \textit{WiFiClient espClient;} zu erzeugen.
+Diese Instanz wird dann wiederum bei der Instanziierung der "`PubSubClient"'-Klasse übergeben: \textit{PubSubClient client(espClient);}.
+Auch die Verbindungsherstellung zum MQTT-Broker wurde in eine Funktion ausgelagert.\ref{lst:mqttconnect}
+Dieser wird die URL des Brokers sowie der zugehörige Port übergeben.
+Die Funktion wird ebenfalls in der \textit{void setup()}-Funktion für die initiale Verbindung aufgerufen, dieser Aufruf erfolgt nachdem die WLAN-Verbindung erfolgreich hergestellt wurde.
+Auch beim MQTT-Broker wird bei jedem Durchlauf der \textit{void loop()}-Funktion mit \textit{if(!client.connected())} überprüft, ob die Verbindung noch offen ist um diese gegebenenfalls wiederherzustellen.
+Bevor die Messwerte dann an den Broker gepublisht werden können, müssen diese als JSON-Objekt serialisiert werden.
+Hierfür wird die "`ArduinoJson"'-Bibliothek eingebunden.
+Die Klasseninstanz wird hier mit \textit{JsonDocument serializedData;} nur lokal in der \textit{void loop()}-Funktion erzeugt, sodass dieses in jedem Durchlauf neu erzeugt und am Ende wieder verworfen wird.
+Die "`serializedData"'-Instanz wird nun mit den Keys und den enstprechenden Values befüllt.\ref{lst:writejson}
+Da jedoch keine Instanz eines JsonDocuments an den MQTT-Broker gepublisht werden kann, muss die Zeichenanzahl bestimmt und der Inhalt zuerst wieder in ein Characterarray gespeichert werden: \textit{size\_t n = serializeJson(serializedData, buffer);}.
+Nun können die Messwerte zusammen mit den Keys an den Broker gesendet werden : \textit{client.publish(topic, buffer, n)}.
+Hier muss noch die Topic mit angegeben werden, welche dann später wieder vom Server abgefragt werden kann.
+Zusätzlich wird der Character Array und die Länge dessen übergeben.
