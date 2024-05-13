@@ -179,7 +179,8 @@ marginal
 
 	
 	\include{pages/titelseite} 				
-	\pagenumbering{roman}					 
+	\pagenumbering{roman}	
+	\setcounter{tocdepth}{0}				 
 	\tableofcontents
 	\cleardoublepage
 	\pagenumbering{arabic}
@@ -196,6 +197,7 @@ marginal
 	\nocite{*}	
 	%\printbibliography	
 		
+	\setcounter{tocdepth}{1}
 	\listoffigures
 	\listoftables
 	\lstlistoflistings

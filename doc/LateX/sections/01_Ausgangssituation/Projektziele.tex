@@ -25,7 +25,7 @@
 	Der Datenbankserver soll auch auf dem Raspberry Pi laufen und die Daten, die von den Sensoren ausgeliefert wurden, permanent abspeichern. Als Datenbanksystem soll MariaDB, eine SQL -Implementierung, verwendet werden.
 	
 	\item Kommunikation mit MQTT-Broker \newline
-	Die Daten müssen zwischen den verschiedenen Geräten ausgetauscht werden. Für die Kommunikation wird im Vorfeld ein öffentlicher MQTT-Broker verwendet. In diesem Projekt wird voraussichtlich mit HiveMQ gearbeitet. Optimal wäre das Hosten eines privaten MQTT-Brokers, aber dies liegt außerhalb des Projekterahmens.
+	Die Daten müssen zwischen den verschiedenen Geräten ausgetauscht werden. Für die Kommunikation wird im Vorfeld ein öffentlicher MQTT-Broker verwendet. In diesem Projekt wird voraussichtlich mit HiveMQ gearbeitet. Optimal wäre das Hosten eines privaten MQTT-Brokers, aber dies liegt außerhalb des Projektrahmens.
 	
 	\item Webserver und Broker \newline
 	Der Webserver soll sich als Abonnent am entsprechenden Topic des MQTT-Brokers anmelden, um die regelmäßigen Updates des Topics und somit neue Daten zu erhalten.
