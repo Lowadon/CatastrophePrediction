@@ -4,6 +4,8 @@
 *.aux
 *.log
 *.lof
+*.lot
+*.lol
 *.synctex.gz
 *.toc
 *.pdf
