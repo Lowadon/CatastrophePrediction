@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4 Portable) (preloaded format=pdflatex 2024.5.13)  13 MAY 2024 11:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4 Portable) (preloaded format=pdflatex 2024.5.13)  13 MAY 2024 11:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1909,12 +1909,12 @@ Overfull \vbox (1.76944pt too high) has occurred while \output is active []
 
 [3]) (sections/01_Ausgangssituation/Projektumfeld.tex)
 (sections/02_Ressourcen/Terminplanung.tex
-<images/Zeitplanung.png, id=122, 1324.95pt x 565.36218pt>
+<images/Zeitplanung.png, id=120, 1324.95pt x 565.36218pt>
 File: images/Zeitplanung.png Graphic file (type png)
 <use images/Zeitplanung.png>
 Package pdftex.def Info: images/Zeitplanung.png  used on input line 3.
 (pdftex.def)             Requested size: 426.79134pt x 182.11008pt.
-<images/Gantt.png, id=124, 1810.765pt x 1024.82875pt>
+<images/Gantt.png, id=122, 1810.765pt x 1024.82875pt>
 File: images/Gantt.png Graphic file (type png)
 <use images/Gantt.png>
 Package pdftex.def Info: images/Gantt.png  used on input line 10.
@@ -1990,7 +1990,7 @@ Overfull \vbox (1.76944pt too high) has occurred while \output is active []
  (chapter/Durchfuehrung- und Auftragsbearbeitung.tex
 chapter 2.
 (sections/03_Einleitung.tex) (sections/03_ESP8266/anschliessen_sensoren.tex
-<images/esp_dht.png, id=158, 1606.0pt x 1606.0pt>
+<images/esp_dht.png, id=156, 1606.0pt x 1606.0pt>
 File: images/esp_dht.png Graphic file (type png)
 <use images/esp_dht.png>
 Package pdftex.def Info: images/esp_dht.png  used on input line 10.
@@ -1999,19 +1999,19 @@ Package pdftex.def Info: images/esp_dht.png  used on input line 10.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (sections/03_ESP8266/sensordaten_auslesen.tex)
+) (sections/03_ESP8266/sensordaten_auslesen.tex [9
+
+
+
+
+
+])
 (sections/03_ESP8266/wlan_verbindung.tex)
 (sections/03_ESP8266/publishen_mqtt.tex)
 (sections/04_Raspberry_Pi/installation_software.tex)
 (sections/04_Raspberry_Pi/einrichtung_datenbank.tex)
 (sections/04_Raspberry_Pi/programmierung_nodejs.tex)
-(sections/04_Raspberry_Pi/programmierung_website.tex)) [9
-
-
-
-
-
-]
+(sections/04_Raspberry_Pi/programmierung_website.tex))
 Overfull \vbox (1.76944pt too high) has occurred while \output is active []
 
 
@@ -2025,7 +2025,7 @@ Overfull \vbox (1.76944pt too high) has occurred while \output is active []
  (chapter/Projektergebnisse.tex
 chapter 3.
 (sections/05_Projektergebnisse/Abnahme.tex
-<images/DatabaseSchemeFuture.png, id=180, 427.5975pt x 404.26031pt>
+<images/DatabaseSchemeFuture.png, id=178, 427.5975pt x 404.26031pt>
 File: images/DatabaseSchemeFuture.png Graphic file (type png)
 <use images/DatabaseSchemeFuture.png>
 Package pdftex.def Info: images/DatabaseSchemeFuture.png  used on input line 5.
@@ -2099,10 +2099,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52551 strings out of 474370
- 1272087 string characters out of 5715937
- 2286243 words of memory out of 5000000
- 73991 multiletter control sequences out of 15000+600000
+ 52554 strings out of 474370
+ 1272100 string characters out of 5715937
+ 2286231 words of memory out of 5000000
+ 73994 multiletter control sequences out of 15000+600000
  571910 words of font info for 63 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  108i,10n,122p,10924b,2714s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2130,9 +2130,9 @@ Users\schick\OneDrive - fpt systems GmbH\Dokumente\Executables\miktex-portable\
 texmfs/data\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2074.pk><C:/Users/schick/One
 Drive - fpt systems GmbH/Dokumente/Executables/miktex-portable/texmfs/install/f
 onts/type1/public/eurosym/feybr10.pfb>
-Output written on main.pdf (17 pages, 2927131 bytes).
+Output written on main.pdf (17 pages, 2926652 bytes).
 PDF statistics:
- 741 PDF objects out of 1000 (max. 8388607)
+ 739 PDF objects out of 1000 (max. 8388607)
  87 named destinations out of 1000 (max. 500000)
  249 words of extra memory for PDF output out of 10000 (max. 10000000)
 
