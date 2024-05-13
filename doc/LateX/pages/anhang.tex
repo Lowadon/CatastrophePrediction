@@ -188,6 +188,31 @@
 	}
 \end{lstlisting}
 
+\begin{lstlisting}[language=C++,caption={Klasse für Sensordaten}, label=lst:class_sensordata]
+	class sensorData
+	{
+		public:
+		sensorData(std::time_t now, float temperature, float humidity, float altitude, float airPressure)
+		: now(now)
+		, temperature(temperature)
+		, humidity(humidity)
+		, altitude(altitude)
+		, airPressure(airPressure)
+		{
+			//Erzeugung eines verwendbaren, aktuellen timestamps
+			strftime(timestamp, 20, "%Y-%m-%d %H:%M:%S" ,localtime(&now));
+		}
+		~sensorData() {}
+		public:
+		std::time_t now;
+		char timestamp[20];
+		float temperature = 0.0f;
+		float humidity = 0.0f;
+		float altitude = 0.0f;
+		float airPressure = 0.0f;
+	};
+\end{lstlisting}
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=7cm]{images/esp_dht.png}
