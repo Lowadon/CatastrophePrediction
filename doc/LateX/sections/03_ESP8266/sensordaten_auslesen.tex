@@ -13,7 +13,11 @@ Diese wird mit
 eingebunden.
 
 \subsubsection{Auslesen DHT}
-	Beim DHT war es noch zusätzlich notwendig, die "`DHT"'-Bibliothek mit \textit{\#include <DHT.h>} einzubinden.
+	Beim DHT war es noch zusätzlich notwendig, die "`DHT"'-Bibliothek mit 
+\begin{lstlisting}[language=C++]
+	#include <DHT.h>
+\end{lstlisting}
+ 	einzubinden.
 	Wenn die Bibliothek eingebunden ist, kann eine Instanz vom Typ "`DHT"' und der Bezeichnung "`dht"' mit der Zeile \textit{DHT dht(02,DHT22);} erzeugt werden.
 	Die "`02"' beschreibt den Pin, auf welchen der DHT die Daten sendet und das "`DHT22"' beschreibt den genauen Typ des DHT.
 	
