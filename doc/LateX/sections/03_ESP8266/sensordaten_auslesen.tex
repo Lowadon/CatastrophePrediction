@@ -1,9 +1,15 @@
 Weil MicroPython auf dem ESP in Kombination mit einem MQTT-Broker schon 
 zuvor im Unterricht Probleme bereitet hat, haben wir uns dazu entschieden, den ESP mit C++ zu programmieren.
 
-Für sowohl den DHT als auch den BMP 
+Für sowohl den DHT als auch den BMP wurde die "`Adafruit\_Sensor"'-Bibliothek verwendet.
+Diese wird mit \textit{#include Adafruit\_Sensor.h} eingebunden.
 
 \subsubsection{Auslesen DHT}
+	Beim DHT war es noch zusätzlich notwendig, die "`DHT"'-Bibliothek mit \textit{#include <DHT.h>} einzubinden.
+	Wenn die Bibliothek eingebunden ist, kann eine Instanz vom Typ "`DHT"' und der Bezeichnung "`dht"' mit der Zeile \textit{DHT dht(02,DHT22);} erzeugt werden.
+	Die "`02"' beschreibt den Pin, auf welchen der DHT die Daten sendet und das "`DHT22"' beschreibt den genauen Typ des DHT.
+	
+	In der Funktion \textit{void setup()} wird 
 
 \subsubsection{Auslesen BMP}
 
