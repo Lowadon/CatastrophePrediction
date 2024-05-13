@@ -1,86 +1,18 @@
 \subsubsection{Konfiguration der MariaDB Verbindung}
-Das folgende Code Snippet bescheibt die Datenbankverbindung zum lokal installierten Datenbankserver. Es enthält die benötigten Bibliotheken, den Userzugang und die Datenbank auf dem Server mit dem sich der Webserver verbindet.
-\begin{lstlisting}[language=java]
-	//MariaDB
-	const mariadb = require('mariadb');
-	const pool = mariadb.createPool({
-		host: 'localhost',
-		user: 'root',
-		password: 'toor',
-		database: 'esp_data',
-		connectionLimit: 2
-	});
-\end{lstlisting}
+Das Code Snippet \ref{lst:conf_mariadb_conn} bescheibt die Datenbankverbindung zum lokal installierten Datenbankserver. Es enthält die benötigten Bibliotheken, den Userzugang und die Datenbank auf dem Server mit dem sich der Webserver verbindet.
+
 
 \subsubsection{Konfiguration der MQTT Verbindung}
-Der folgende Code bescheibt die Konfiguration des MQTT Objekts. Hier wurde nicht, wie geplant, mit HiveMQ gearbeitet, sondern mit Mosquitto. Getestet wurde auch der Eclipseprojects MQTT Broker. Für unser Projekt war aber Mosquitto der stabilste öffentliche Broker. Auch hier werden erst die benötigten Bibliotheken angegeben. Es folgen die Broker-URL, der Port und das Topic. Dann wird eine Verbindung aufgebaut und sich als Abonnent am Topic angemeldet, so dass der Broker Updates an den Webserver schicken kann.
-\begin{lstlisting}[language=java]
-	//MQTT
-	const mqtt = require('mqtt');
-	const { each, error, ready } = require("jquery");
-	const protocol = 'mqtt';
-	const mqtt_broker = 'test.mosquitto.org';
-	//const mqtt_broker = 'mqtt.eclipseprojects.io';
-	const mqtt_port = 1883;
-	const mqtt_url = protocol + '://' + mqtt_broker + ':' + mqtt_port;
-	const mqtt_topic = 'est/katastrophenprojekt/espdaten';
-	const mqtt_client = mqtt.connect(mqtt_url, keepalive = 60);
-	let topic = mqtt_client.subscribe(mqtt_topic);
-\end{lstlisting}
+Der Code in \ref{lst:conf_mqtt_conn} bescheibt die Konfiguration des MQTT Objekts. Hier wurde nicht, wie geplant, mit HiveMQ gearbeitet, sondern mit Mosquitto. Getestet wurde auch der Eclipseprojects MQTT Broker. Für unser Projekt war aber Mosquitto der stabilste öffentliche Broker. Auch hier werden erst die benötigten Bibliotheken angegeben. Es folgen die Broker-URL, der Port und das Topic. Dann wird eine Verbindung aufgebaut und sich als Abonnent am Topic angemeldet, so dass der Broker Updates an den Webserver schicken kann.
 
 \subsubsection{Event: MQTT Message}
-Dieses Event beschreibt was passiert, wenn eine Nachricht vom MQTT-Broker empfangen wird. Erst wird die Nachricht in die Konsole geschrieben, was beim Debugging hilft und dann wird die Nachricht in der Funktion: messageRecieved weiterverarbeitet.
-\begin{lstlisting}[language=java]
-	mqtt_client.on('message', (topic, message) => {
-		console.log('Message:' + message);
-		messageRecieved(message);
-		//console.log('success');
-	});
-\end{lstlisting}
+Dieses Event \ref{lst:event_message} beschreibt was passiert, wenn eine Nachricht vom MQTT-Broker empfangen wird. Erst wird die Nachricht in die Konsole geschrieben, was beim Debugging hilft und dann wird die Nachricht in der Funktion: messageRecieved weiterverarbeitet.
 
 \subsubsection{Funktion: messageRecieved}
-In der Funktion messageRecieved(message) wird, wie oben erwähnt, die Nachricht verarbeitet. Da die Daten in zwei verschiedene Tabellen in der Datenbank geschrieben werden müssen werden hier auch zwei SQL-Queries ausgeführt. 
-\begin{lstlisting}[language=java]
-	async function messageRecieved(message) {
-		let conn;
-		let jsonObj = JSON.parse(message);
-		try {
-			conn = await pool.getConnection();
-			const res = await conn.query("INSERT INTO devices (id, first_entry, last_entry) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE last_entry = VALUES (last_entry);", [jsonObj.device_id, jsonObj.timestamp, jsonObj.timestamp]);
-			console.log(res);
-			const entry = await conn.query("INSERT INTO esp_data.entries (esp_id, altitude, pressure, temperature, humidity, recorded_at) VALUES (?, ?, ?, ?, ?, ?);", [jsonObj.device_id, jsonObj.altitude, jsonObj.airPressure, jsonObj.temperature, jsonObj.humidity, jsonObj.timestamp]);
-			console.log(entry);
-		} catch(err) {
-			console.log("Error: " + err);
-			throw err;
-		}
-		finally {
-			if(conn) return conn.end();
-		}
-	}
-\end{lstlisting}
+In der Funktion messageRecieved(message) \ref{lst:function_message_recieved} wird, wie oben erwähnt, die Nachricht verarbeitet. Da die Daten in zwei verschiedene Tabellen in der Datenbank geschrieben werden müssen werden hier auch zwei SQL-Queries ausgeführt.
 
 \subsubsection{Route: getData}
-Diese Route wird aufgerufen, wenn die Route: Index geladen wird. Dabei wird die asynchrone Funktion readData(req, res) ausgeführt.
-\begin{lstlisting}[language=java]
-	app.get("/data", (req, res) => {
-		readData(req, res);
-	});
-\end{lstlisting}
+Diese Route \ref{lst:route_get_data} wird aufgerufen, wenn die Route: Index geladen wird. Dabei wird die asynchrone Funktion readData(req, res) ausgeführt.
 
 \subsubsection{Funktion: readData}
-Die Funktion readData(req, res) liest Daten aus der Datenbank und sendet diese and die Website, damit sie dort visualisiert werden können.
-\begin{lstlisting}[language=java]
-	async function readData(req, res) {
-		let conn;
-		try {
-			conn = await pool.getConnection();
-			data = await conn.query("SELECT * FROM (SELECT * FROM entries ORDER BY recorded_at DESC LIMIT 1000) AS subquery ORDER BY id ASC;");
-			res.json(data);
-		} catch (err) {
-			throw err;
-		} finally {
-			if (conn) conn.end();
-		}
-	}
-\end{lstlisting}
+Die Funktion readData(req, res) \ref{lst:function_read_data} liest Daten aus der Datenbank und sendet diese and die Website, damit sie dort visualisiert werden können.
