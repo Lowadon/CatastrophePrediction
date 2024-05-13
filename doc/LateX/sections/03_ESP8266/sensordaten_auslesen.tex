@@ -1,7 +1,7 @@
 Weil MicroPython auf dem ESP in Kombination mit einem MQTT-Broker schon 
-zuvor im Unterricht Probleme bereitet hat, haben wir uns dazu entschieden, den ESP mit C++ zu programmieren.
+zuvor im Unterricht Probleme bereitet hat, wurde entschieden, das ESP mit C++ zu programmieren.
 
-Für das Handling der Sensordaten und des Timestamps, welcher später übermittelt werden soll, wurde eine separate Klasse "`sensorData"' \ref{lst:class_sensordata} angelegt.
+Für das Handling der Sensordaten und des Timestamps, welche später übermittelt werden sollen, wurde eine separate Klasse "`sensorData"' \ref{lst:class_sensordata} angelegt.
 Über den Konstruktor können die Werte an eine Klasseninstanz übergeben werden. 
 Werden diese dann zum Übermitteln an den Broker benötigt, können die Werte dann einfach per Pfeiloperator ("`->"') abgefragt werden.
 
@@ -60,7 +60,7 @@ eingebunden.
 \end{lstlisting}
 	der aktuelle Luftdruck gemessen und auf den Luftdruck auf Meereshöhe rückgerechnet. Dieser wird dann in der Variable "`seaLevelPressure"' gespeichert, welche dann als Referenz für die weiteren Messungen verwendet wird.
 	
-	Da der BMP mit 
+	Da das BMP mit 
 \begin{lstlisting}[language=C++]
 	bmp180.readTemperature();
 \end{lstlisting}
@@ -78,12 +78,12 @@ eingebunden.
 	Die Konvertierung zu einem Float und das Dividieren durch 100 sorgt dafür, dass der Druck in mBar mit Nachkommastellen zurückgeliefert wird.
 
 \subsubsection{Erzeugung Timestamp}
-	Da der Timestamp keine zeitliche Abweichung zu den Messergebnissen haben soll, wird dieser annähernd zeitgleich ebenfalls durch den ESP abgespeichert.
-	Aufgrund der Tatsache, dass der ESP über keine interne Uhr verfügt und auch 
+	Da der Timestamp keine zeitliche Abweichung zu den Messergebnissen haben soll, wird dieser annähernd zeitgleich ebenfalls durch das ESP abgespeichert.
+	Aufgrund der Tatsache, dass das ESP über keine interne Uhr verfügt und auch 
 \begin{lstlisting}[language=C++]
 	std::chrono::system_clock::now;
 \end{lstlisting}
-	nur auf den NTP-Server des verbundenen WLAN-Routers zugreift, kann diese Bibliothek nicht verwendet werden. Wenn der ESP mit dem Hotspot eines Smartphones verbunden wird, liefert 
+	nur auf den NTP-Server des verbundenen WLAN-Routers zugreift, kann diese Bibliothek nicht verwendet werden. Wenn das ESP mit dem Hotspot eines Smartphones verbunden wird, liefert 
 \begin{lstlisting}[language=C++]
 	std::chrono::system_clock::now;
 \end{lstlisting}

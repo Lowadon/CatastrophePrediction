@@ -13,3 +13,7 @@
 *.nlo
 *.out
 *.run.xml
+*.bbl
+*.blg
+*.nlg
+*.nls
