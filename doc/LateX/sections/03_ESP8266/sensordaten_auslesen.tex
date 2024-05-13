@@ -6,38 +6,108 @@ Für das Handling der Sensordaten und des Timestamps, welcher später übermitte
 Werden diese dann zum Übermitteln an den Broker benötigt, können die Werte dann einfach per Pfeiloperator ("`->"') abgefragt werden.
 
 Für sowohl den DHT als auch den BMP wurde die "`Adafruit\_Sensor"'-Bibliothek verwendet.
-Diese wird mit \textit{\#include Adafruit\_Sensor.h} eingebunden.
+Diese wird mit 
+\begin{lstlisting}[language=C++]
+	#include Adafruit_Sensor.h
+\end{lstlisting}
+eingebunden.
 
 \subsubsection{Auslesen DHT}
 	Beim DHT war es noch zusätzlich notwendig, die "`DHT"'-Bibliothek mit \textit{\#include <DHT.h>} einzubinden.
 	Wenn die Bibliothek eingebunden ist, kann eine Instanz vom Typ "`DHT"' und der Bezeichnung "`dht"' mit der Zeile \textit{DHT dht(02,DHT22);} erzeugt werden.
 	Die "`02"' beschreibt den Pin, auf welchen der DHT die Daten sendet und das "`DHT22"' beschreibt den genauen Typ des DHT.
 	
-	In der Funktion \textit{void setup()} wird mit der Zeile \textit{dht.begin();} das Auslesen des Pins gestartet. 
-	Jetzt kann in der Funktion \textit{void loop()} mit \textit{dht.readTemperature()} die aktuelle Temperatur und mit \textit{dht.readHumidity()}
+	In der Funktion \textit{void setup()} wird mit der Zeile
+\begin{lstlisting}[language=C++]
+	dht.begin();
+\end{lstlisting}
+	das Auslesen des Pins gestartet. 
+	Jetzt kann in der Funktion \textit{void loop()} mit 
+\begin{lstlisting}[language=C++]
+	dht.readTemperature();
+\end{lstlisting}
+	die aktuelle Temperatur und mit
+\begin{lstlisting}[language=C++]
+	dht.readHumidity();
+\end{lstlisting}
 	die aktuelle Luftfeuchtigkeit ausgelesen werden.
 	
 \subsubsection{Auslesen BMP}
 	Für den BMP musste noch die "`Adafruit\_BMP085"'-Bibliothek eingebunden werden.
-	Hier wurde dann ebenfalls eine Klasseninstanz mit \textit{Adafruit\_BMP085 bmp180;} erzeugt. Beim BMP war keine weitere Konfiguration notwendig.
+	Hier wurde dann ebenfalls eine Klasseninstanz mit 
+\begin{lstlisting}[language=C++]
+	Adafruit_BMP085 bmp180;
+\end{lstlisting}
+	erzeugt. Beim BMP war keine weitere Konfiguration notwendig.
 	
-	Ähnlich zum DHT wird auch beim BMP das Auslesen mit \textit{bmp180.begin();} in der \textit{void setup()} gestartet.
+	Ähnlich zum DHT wird auch beim BMP das Auslesen mit 
+\begin{lstlisting}[language=C++]
+	bmp180.begin();
+\end{lstlisting}
+	in der \textit{void setup()} gestartet.
 	Da der Luftdruck jedoch je nach Wetterlage variieren kann, muss der Sensor am Start referenziert werden.
-	Da die Höhe des Klassenzimmers bekannt ist (469 m über N.N.), wird immer beim Start mit \textit{seaLevelPressure = bmp180.readSealevelPressure(currentAltitude);} der aktuelle Luftdruck gemessen und auf den Luftdruck auf Meereshöhe rückgerechnet. Dieser wird dann in der Variable "`seaLevelPressure"' gespeichert, welche dann als Referenz für die weiteren Messungen verwendet wird.
+	Da die Höhe des Klassenzimmers bekannt ist (469 m über N.N.), wird immer beim Start mit 
+\begin{lstlisting}[language=C++]
+	seaLevelPressure = bmp180.readSealevelPressure(currentAltitude);
+\end{lstlisting}
+	der aktuelle Luftdruck gemessen und auf den Luftdruck auf Meereshöhe rückgerechnet. Dieser wird dann in der Variable "`seaLevelPressure"' gespeichert, welche dann als Referenz für die weiteren Messungen verwendet wird.
 	
-	Da der BMP mit \textit{bmp180.readTemperature()} ebenfalls die aktuelle Temperatur messen kann, wird aus den Temperaturen des DHT und BMP der Mittelwert gebildet und abgespeichert.
-	Die aktuelle Höhe kann über \textit{bmp180.readAltitude(seaLevelPressure)} in Anhängigkeit des zuvor referenzierten Luftdrucks gemessen werden.
-	Da auch der Luftdruck auf der Website erscheinen soll, wird dieser mit \textit{(float)bmp180.readPressure()/100} ausgelesen.
+	Da der BMP mit 
+\begin{lstlisting}[language=C++]
+	bmp180.readTemperature();
+\end{lstlisting}
+	ebenfalls die aktuelle Temperatur messen kann, wird aus den Temperaturen des DHT und BMP der Mittelwert gebildet und abgespeichert.
+	Die aktuelle Höhe kann über 
+\begin{lstlisting}[language=C++]
+	bmp180.readAltitude(seaLevelPressure);
+\end{lstlisting}
+	in Anhängigkeit des zuvor referenzierten Luftdrucks gemessen werden.
+	Da auch der Luftdruck auf der Website erscheinen soll, wird dieser mit 
+\begin{lstlisting}[language=C++]
+	(float)bmp180.readPressure()/100;
+\end{lstlisting}
+	ausgelesen.
 	Die Konvertierung zu einem Float und das Dividieren durch 100 sorgt dafür, dass der Druck in mBar mit Nachkommastellen zurückgeliefert wird.
 
 \subsubsection{Erzeugung Timestamp}
 	Da der Timestamp keine zeitliche Abweichung zu den Messergebnissen haben soll, wird dieser annähernd zeitgleich ebenfalls durch den ESP abgespeichert.
-	Aufgrund der Tatsache, dass der ESP über keine interne Uhr verfügt und auch \textit{std::chrono::system\_clock::now} nur auf den NTP-Server des verbundenen WLAN-Routers zugreift, kann diese Bibliothek nicht verwendet werden. Wenn der ESP mit dem Hotspot eines Smartphones verbunden wird, liefert \textit{std::chrono::system\_clock::now} nur noch "`0000000000"' zurück, da das Smartphone keinen NTP-Server zur Verfügung stellt.
+	Aufgrund der Tatsache, dass der ESP über keine interne Uhr verfügt und auch 
+\begin{lstlisting}[language=C++]
+	std::chrono::system_clock::now;
+\end{lstlisting}
+	nur auf den NTP-Server des verbundenen WLAN-Routers zugreift, kann diese Bibliothek nicht verwendet werden. Wenn der ESP mit dem Hotspot eines Smartphones verbunden wird, liefert 
+\begin{lstlisting}[language=C++]
+	std::chrono::system_clock::now;
+\end{lstlisting}
+	nur noch "`0000000000"' zurück, da das Smartphone keinen NTP-Server zur Verfügung stellt.
 	Diese Limitierung kann jedoch umgangen werden, indem direkt auf eine URL eines NTP-Servers verwiesen wird, von welchem dann die aktuelle Zeit bezogen werden kann.
 	Für den direkten Verweis auf einen NTP-Server sind sowohl die "`NTPClient"' als auch die "`WiFiUdp"'-Bibliothek nötig.
-	Die "`WiFiUdp"'-Instanz kann ohne weitere Parameter initialisiert werden (\textit{WiFiUDP ntpUDP;}), beim NTPClient müssen die WiFiUdp-Instanz, die Url des NTP-Servers und die Verschiebung zur UTC in Sekunden angegeben werden: \textit{NTPClient timeClient(ntpUDP, "pool.ntp.org", 7200);}.
-	Auch der "`timeClient"' muss mit \textit{timeClient.begin();} gestartet werden, jedoch ist hier naheliegenderweise eine WLAN-Verbindung notwendig.
-	Bevor die Zeit abgefragt wird, muss der Client mit \textit{timeClient.update();} geupdated werden, dass tatsächlich die aktuelle Zeit zurückgeliefert wird.
-	Für einen Timestamp mit Uhrzeit und Datum muss zuerst die "`EpochTime"' abgefragt werden (\textit{timeClient.getEpochTime()}), dies liefert einen Unix-Timestamp zurück.
-	Dieser kann dann mit \textit{strftime(timestamp, 20, "`\%Y-\%m-\%d \%H:\%M:\%S"' ,localtime(\&now));} in ein YYYY-MM-DD HH:MM:SS Format umformatiert und in die Variable "`timestamp"' abgespeichert werden.
+	Die "`WiFiUdp"'-Instanz kann ohne weitere Parameter initialisiert werden:
+\begin{lstlisting}[language=C++]
+	WiFiUDP ntpUDP;
+\end{lstlisting}
+	Beim NTPClient müssen die WiFiUdp-Instanz, die URL des NTP-Servers und die Verschiebung zur UTC in Sekunden angegeben werden: 
+\begin{lstlisting}[language=C++]
+	NTPClient timeClient(ntpUDP, "pool.ntp.org", 7200);
+\end{lstlisting}
+	Auch der "`timeClient"' muss mit 
+\begin{lstlisting}[language=C++]
+	timeClient.begin();
+\end{lstlisting}
+	gestartet werden, jedoch ist hier naheliegenderweise eine WLAN-Verbindung notwendig.
+	Bevor die Zeit abgefragt wird, muss der Client mit 
+\begin{lstlisting}[language=C++]
+	timeClient.update();
+\end{lstlisting}
+	geupdated werden, dass tatsächlich die aktuelle Zeit zurückgeliefert wird.
+	Für einen Timestamp mit Uhrzeit und Datum muss zuerst die "`EpochTime"' abgefragt werden:
+\begin{lstlisting}[language=C++]
+	timeClient.getEpochTime();
+\end{lstlisting}
+	Dies liefert einen Unix-Timestamp zurück.
+	Dieser kann dann mit 
+\begin{lstlisting}[language=C++]
+	strftime(timestamp, 20, "`\%Y-\%m-\%d \%H:\%M:\%S"' ,localtime(\&now));
+\end{lstlisting}
+	in ein YYYY-MM-DD HH:MM:SS Format umformatiert und in die Variable "`timestamp"' abgespeichert werden, wobei die Variable "`now"' die zuvor abgefragte "`EpochTime"' ist.
 	
